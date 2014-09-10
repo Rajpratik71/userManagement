@@ -12,7 +12,7 @@ WorkShop
   - 笔记本
     - 操作系统不限，安装有Git，JDK 7
     - 从`https://services.gradle.org/distributions/gradle-2.0-bin.zip`下载gradle-2.0-bin.zip到用户根目录，供Gradle Wrapper使用
-    - 从`http://www.go.cd/download/`下载对应平台的Go安装程序
+    - 从`http://www.go.cd/download/`下载对应平台的Go Server安装程序和Go Agent安装程序
   - 也可以下载封装好的Docker image，用Docker搭建Go的C/S架构
     - lxdcn/openworkshop-go-server
     - lxdcn/openworkshop-go-agent

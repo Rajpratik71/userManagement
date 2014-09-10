@@ -34,6 +34,29 @@ WorkShop
 工程在容器里启动之后可以用浏览器访问http://localhost:8080/web/index.html。
 
 
+
+
+<br /><br />
+
+CI脚本解释
+---------
+
+core模块的编译：sh script/core-compile.sh
+
+core模块的单元测试：sh script/core-ut.sh
+
+core模块的集成测试：sh script/core-integration-test.sh
+
+core模块打jar包：sh script/core-package.sh
+
+<br />
+web模块的编译：sh script/web-compile.sh
+
+web模块的单元测试：sh script/web-ut.sh
+
+web模块打war包：sh script/web-package.sh
+
+
 <br /><br />
 
 Acknowledgement

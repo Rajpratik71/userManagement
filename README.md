@@ -53,9 +53,10 @@ web模块的单元测试：`sh script/web-ut.sh`
 web模块打war包：`sh script/web-package.sh`
 
 
-<br /><br />
+<br /><br /><br />
 
 core模块生成的jar包路径在`core/build/libs/core.jar`
+web模块生成的jar包路径在`web/build/libs/web.war`
 
 <br /><br />
 

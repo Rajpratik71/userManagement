@@ -53,8 +53,33 @@ web模块的单元测试：`sh script/web-ut.sh`
 web模块打war包：`sh script/web-package.sh`
 
 
+<br /><br />
+
+
+CI脚本解释 - Windows 平台
+------------------------
+
+core模块的编译：`script-win32/core-compile.cmd`
+
+core模块的单元测试：`script-win32/core-ut.cmd`
+
+core模块的集成测试：`script-win32/core-integration-test.cmd`
+
+core模块打jar包：`script-win32/core-package.cmd`
+
+<br />
+web模块的编译：`script-win32/web-compile.cmd`
+
+web模块的单元测试：`script-win32/web-ut.cmd`
+
+web模块打war包：`script-win32/web-package.cmd`
+
+
 <br /><br /><br />
 
+
+模块间Jar包依赖
+---------------
 core模块生成的jar包路径在`core/build/libs/core.jar`
 
 web模块生成的jar包路径在`web/build/libs/web.war`

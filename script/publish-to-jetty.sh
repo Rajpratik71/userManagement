@@ -1,8 +1,6 @@
 #! /usr/bin/env bash 
 
 cp web.war "$1/webapps"
-"$1/bin/jetty.sh" restart
 
-echo 'Done'
-
-exit 0
+echo 'Restarting jetty ...'
+"$1/bin/jetty.sh" restart > /dev/null 2>&1

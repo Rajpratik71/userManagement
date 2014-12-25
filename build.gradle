@@ -23,3 +23,4 @@ task wrapper(type: Wrapper) {
 
 //gradle任务练习
 //mysql -Duser_management -uroot < core/src/main/resources/db/seed/init-user.sql
+//mysql -DwebP2p -uroot < core/src/main/resources/db/seed/init-user.sql

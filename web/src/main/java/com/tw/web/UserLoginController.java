@@ -5,7 +5,6 @@ import com.tw.core.service.UserService;
 import com.tw.core.service.PasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +21,7 @@ public class UserLoginController {
 
     private UserService userService;
     private PasswordService passwordService;
+    private UserLoginCookieTool cookieService;
 
     @Autowired
     public UserLoginController(UserService userService, PasswordService passwordService) {
@@ -42,13 +42,18 @@ public class UserLoginController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ModelAndView login(@ModelAttribute User user, HttpSession sessionObj) {
-        ModelAndView loginSucess = new ModelAndView("redirect:/user/");
+    public ModelAndView login(@ModelAttribute User user, HttpSession session,
+                              @CookieValue(value = "lastController", required = false)
+                              String lastController,
+                              HttpServletResponse response) {
+        String redirectDest = lastController == null ? "/user/" : lastController;
+        ModelAndView loginSuccess = new ModelAndView("redirect:" + redirectDest);
         ModelAndView loginFailed = new ModelAndView("login");
 
         if (validateLogin(user)) {
-            sessionObj.setAttribute("username", user.getName());
-            return loginSucess;
+            session.setAttribute("username", user.getName());
+            UserLoginCookieTool.clearCookie(response, "lastController");
+            return loginSuccess;
         } else {
             return loginFailed;
         }

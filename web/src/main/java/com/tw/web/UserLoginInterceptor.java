@@ -16,7 +16,9 @@ public class UserLoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("PreHandle");
         HttpSession session = request.getSession();
-        if( session.getAttribute("username") == null ) {
+        if (session.getAttribute("username") == null) {
+            String lastController = request.getRequestURI().replaceFirst("/web", "");
+            UserLoginCookieTool.setCookie(response,"lastController", lastController);
             response.sendRedirect("/web/login/");
             return false;
         }

@@ -58,7 +58,7 @@ public class UserLoginController {
         String userName = user.getName();
         String userPasswordEncrypted = passwordService.encrypt(user.getPassword());
         List<User> userList = userService.validateUser(userName, userPasswordEncrypted);
-        return userList != null;
+        return userList.size() != 0;
     }
 }
 

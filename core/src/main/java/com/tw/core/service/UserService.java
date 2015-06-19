@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.print.DocFlavor;
 import java.util.List;
 
 /**
@@ -48,6 +49,11 @@ public class UserService {
     @Transactional
     public void deleteUserList(long[] ids) {
         userDAO.deleteUserList(ids);
+    }
+
+    @Transactional
+    public List<User> validateUser(String userName,String userPassword){
+        return userDAO.validateUserNameAndPassword(userName,userPassword);
     }
 
 }

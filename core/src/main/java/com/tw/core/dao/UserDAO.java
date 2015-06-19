@@ -52,4 +52,12 @@ public class UserDAO {
             deleteUser(ids[index]);
         }
     }
+
+    public List<User> validateUserNameAndPassword(String userName, String userPassword) {
+        String query = "FROM User WHERE name=:userName AND password=:userPassword";
+        return sessionFactory.getCurrentSession().createQuery(query)
+                .setString("userName",userName)
+                .setString("userPassword", userPassword)
+                .list();
+    }
 }

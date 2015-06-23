@@ -11,5 +11,6 @@
         <property name="job" type="string">
             <column name="JOB" />
         </property>
+        <one-to-one name="user" class="com.tw.core.User" />
     </class>
 </hibernate-mapping>

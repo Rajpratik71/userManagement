@@ -16,6 +16,17 @@ public class Employee {
     @Column(name = "JOB")
     private String job;
 
+    @OneToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public long getUserId(){
         return userId;
     }

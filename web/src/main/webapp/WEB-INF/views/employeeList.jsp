@@ -45,6 +45,7 @@
       <th><input type="checkbox" onchange="select_all_or_select_none(this)"/></th>
       <th>ID</th>
       <th>job</th>
+      <th>Name</th>
     </tr>
     </thead>
     <tbody>
@@ -53,6 +54,7 @@
         <td><input type="checkbox" name="selected_user_id" value="${user.id}" /></td>
         <td>${employee.userId}</td>
         <td>${employee.job}</td>
+        <td>${employee.user.name}</td>
         <td>
           <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${user.id}/edit">修改</a>
           <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${user.id}/delete">删除</a>

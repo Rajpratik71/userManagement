@@ -25,6 +25,18 @@ public class User {
     @Column(name = "AGE")
     private int age;
 
+    @OneToOne
+    @JoinColumn(name = "ID")//have other implement?
+    private Employee employee;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
     public User() {
     }
 

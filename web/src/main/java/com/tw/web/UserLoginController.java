@@ -59,8 +59,7 @@ public class UserLoginController {
     private boolean validateLogin(User user) {
         String userName = user.getName();
         String userPasswordEncrypted = passwordService.encrypt(user.getPassword());
-        List<User> userList = userService.validateUser(userName, userPasswordEncrypted);
-        return userList.size() != 0;
+        return userService.validateUser(userName, userPasswordEncrypted);
     }
 }
 

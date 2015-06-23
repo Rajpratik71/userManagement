@@ -52,8 +52,8 @@ public class UserService {
     }
 
     @Transactional
-    public List<User> validateUser(String userName,String userPassword){
-        return userDAO.validateUserNameAndPassword(userName,userPassword);
+    public boolean validateUser(String userName,String userPassword){
+        return userDAO.validateUserNameAndPassword(userName,userPassword).size() != 0;
     }
 
 }

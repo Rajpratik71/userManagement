@@ -17,6 +17,7 @@ public class Employee {
     private String job;
 
     @OneToOne
+    @JoinColumn(name = "USER_ID")
     private User user;
 
     public User getUser() {

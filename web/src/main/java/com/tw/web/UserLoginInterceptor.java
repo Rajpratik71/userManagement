@@ -18,7 +18,7 @@ public class UserLoginInterceptor implements HandlerInterceptor {
         HttpSession session = request.getSession();
         if (session.getAttribute("username") == null) {
             String lastController = request.getRequestURI().replaceFirst("/web", "");
-            UserLoginCookieTool.setCookie(response,"lastController", lastController);
+            new CookieTool().setCookie(response, "lastController", lastController);
             response.sendRedirect("/web/login/");
             return false;
         }

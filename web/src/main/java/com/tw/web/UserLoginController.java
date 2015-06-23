@@ -46,7 +46,7 @@ public class UserLoginController {
                               HttpServletResponse response) {
         String redirectDest = lastController == null ? "/user/" : lastController;
         ModelAndView loginSuccess = new ModelAndView("redirect:" + redirectDest);
-        ModelAndView loginFailed = new ModelAndView("login");
+        ModelAndView loginFailed = new ModelAndView("redirect:/login/");
         if (validateLogin(user)) {
             session.setAttribute("username", user.getName());
             new CookieTool().clearCookie(response, "lastController");

@@ -46,15 +46,17 @@
       <th>ID</th>
       <th>job</th>
       <th>Name</th>
+      <th>CustomerSize</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="employee" items="${employees}">
+    <c:forEach var="employee" items="${employees}" varStatus="status">
       <tr class="user_line">
         <td><input type="checkbox" name="selected_user_id" value="${user.id}" /></td>
         <td>${employee.userId}</td>
         <td>${employee.job}</td>
         <td>${employee.user.name}</td>
+        <td>${customerSize[status.index]}</td>
         <td>
           <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${user.id}/edit">修改</a>
           <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${user.id}/delete">删除</a>

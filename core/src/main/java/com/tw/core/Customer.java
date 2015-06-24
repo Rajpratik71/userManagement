@@ -21,6 +21,14 @@ public class Customer {
     @Column(name = "AGE")
     private int age;
 
+    @ManyToOne//owner
+    @JoinTable(
+            name = "PRIVATE_COACH",
+            joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "COACH_ID")
+    )
+    private Employee employee;
+
 
     public long getId() {
         return id;
@@ -52,5 +60,13 @@ public class Customer {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 }

@@ -1,6 +1,7 @@
 package com.tw.core;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by chenbojian on 15-6-23.
@@ -16,9 +17,12 @@ public class Employee {
     @Column(name = "JOB")
     private String job;
 
-    @OneToOne
+    @OneToOne//lazy or eager
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
+    private Set<Customer> customers;
 
     public User getUser() {
         return user;
@@ -42,5 +46,13 @@ public class Employee {
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
     }
 }

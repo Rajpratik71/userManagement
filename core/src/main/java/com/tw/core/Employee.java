@@ -17,11 +17,16 @@ public class Employee {
     @Column(name = "JOB")
     private String job;
 
-    @OneToOne//lazy or eager
-    @JoinColumn(name = "USER_ID")
+    @OneToOne(optional = false,fetch = FetchType.LAZY)//lazy or eager
+    @JoinColumn(name="USER_ID")
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "privateCoach")
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "PRIVATE_COACH",
+            joinColumns = @JoinColumn(name = "COACH_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID")
+    )
     private Set<Customer> privateCustomers;
 
     public User getUser() {

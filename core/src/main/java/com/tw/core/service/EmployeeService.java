@@ -13,6 +13,7 @@ import java.util.List;
  * Created by twer on 7/17/14.
  */
 @Service
+@Transactional
 public class EmployeeService {
     private EmployeeDAO employeeDAO;
 
@@ -21,32 +22,26 @@ public class EmployeeService {
         this.employeeDAO = employeeDAO;
     }
 
-    @Transactional
     public List<Employee> listEmployee() {
         return employeeDAO.listEmployee();
     }
 
-    @Transactional
     public void addEmployee(Employee employee) {
         employeeDAO.addEmployee(employee);
     }
 
-    @Transactional
     public Employee findEmployeeById(long id) {
         return employeeDAO.findEmployeeById(id);
     }
 
-    @Transactional
     public void updateEmployee(Employee employee) {
         employeeDAO.updateEmployee(employee);
     }
 
-    @Transactional
     public void deleteEmployee(long id) {
         employeeDAO.deleteEmployee(id);
     }
 
-    @Transactional
     public void deleteEmployeeList(long[] ids) {
         employeeDAO.deleteEmployeeList(ids);
     }

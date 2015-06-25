@@ -21,7 +21,7 @@ public class Employee {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "privateCoach")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "privateCoach")
     private Set<Customer> privateCustomers;
 
     public User getUser() {

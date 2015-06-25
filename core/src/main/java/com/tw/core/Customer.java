@@ -21,7 +21,7 @@ public class Customer {
     @Column(name = "AGE")
     private int age;
 
-    @ManyToOne//owner
+    @ManyToOne(fetch = FetchType.LAZY)//owner
     @JoinTable(
             name = "PRIVATE_COACH",
             joinColumns = @JoinColumn(name = "CUSTOMER_ID"),

@@ -12,7 +12,7 @@ import java.util.List;
  * Created by twer on 7/17/14.
  */
 @Repository
-@Transactional(readOnly = true)
+@Transactional
 public class EmployeeDAO {
 
     private SessionFactory sessionFactory;

@@ -31,6 +31,12 @@ public class UserController {
     public ModelAndView listOfUsers() {
         ModelAndView modelAndView = new ModelAndView("userList");
         List<User> users = userService.listUser();
+        System.out.println("---------->GetEmployee----------");
+        if (users.get(0).getEmployee() != null) {
+            System.out.println("---------->HaveEmployee----------");
+        } else {
+            System.out.println("---------->Don'tHaveEmployee----------");
+        }
         modelAndView.addObject("users", users);
         return modelAndView;
     }
@@ -39,7 +45,7 @@ public class UserController {
     public ModelAndView addUserPage() {
         ModelAndView modelAndView = new ModelAndView("addUser");
         modelAndView.addObject("user", new User());
-        return  modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -49,7 +55,7 @@ public class UserController {
         String message = "User was successfully added.";
         modelAndView.addObject("message", message);
         modelAndView.addObject("users", userService.listUser());
-        return  modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
@@ -88,6 +94,6 @@ public class UserController {
         System.out.println("---------------");
         userService.deleteUserList(ids);
         modelAndView.addObject("users", userService.listUser());
-        return  modelAndView;
+        return modelAndView;
     }
 }

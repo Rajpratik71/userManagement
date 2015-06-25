@@ -47,7 +47,7 @@
             <th>用户名</th>
             <th>Email</th>
             <th>年龄</th>
-            <th>JOB</th>
+            <%--<th>JOB</th>--%>
             <th>操作</th>
         </tr>
         </thead>
@@ -59,7 +59,7 @@
                 <td>${user.name}</td>
                 <td>${user.email}</td>
                 <td>${user.age}</td>
-                <td>${user.employee.job}</td>
+                <%--<td>${user.employee.job}</td>--%>
                 <td>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/user/${user.id}/edit">修改</a>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/user/${user.id}/delete">删除</a>

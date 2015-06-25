@@ -66,7 +66,9 @@
     </tbody>
   </table>
 </div>
-
+<c:forEach var="customer" items="${employees[3].privateCustomers}">
+<p>${customer.name}</p>
+</c:forEach>
 <script src="../lib/js/jquery-1.11.1.min.js"></script>
 <script src="../lib/js/bootstrap.min.js"></script>
 <script src="../lib/js/underscore.min.js"></script>

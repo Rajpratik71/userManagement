@@ -27,7 +27,7 @@ public class Customer {
             joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
             inverseJoinColumns = @JoinColumn(name = "COACH_ID")
     )
-    private Employee employee;
+    private Employee privateCoach;
 
 
     public long getId() {
@@ -62,11 +62,11 @@ public class Customer {
         this.age = age;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Employee getPrivateCoach() {
+        return privateCoach;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setPrivateCoach(Employee privateCoach) {
+        this.privateCoach = privateCoach;
     }
 }

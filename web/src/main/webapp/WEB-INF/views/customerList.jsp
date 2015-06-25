@@ -24,7 +24,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Age</th>
-            <th>employee</th>
+            <th>privateCoach</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -36,7 +36,7 @@
                 <td>${customer.name}</td>
                 <td>${customer.email}</td>
                 <td>${customer.age}</td>
-                <td>${customer.employee.userId}</td>
+                <td>${customer.privateCoach.userId}</td>
                 <td>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/customer/${user.id}/edit">修改</a>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/customer/${user.id}/delete">删除</a>

@@ -21,8 +21,8 @@ public class Employee {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee")
-    private Set<Customer> customers;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "privateCoach")
+    private Set<Customer> privateCustomers;
 
     public User getUser() {
         return user;
@@ -48,11 +48,11 @@ public class Employee {
         this.job = job;
     }
 
-    public Set<Customer> getCustomers() {
-        return customers;
+    public Set<Customer> getPrivateCustomers() {
+        return privateCustomers;
     }
 
-    public void setCustomers(Set<Customer> customers) {
-        this.customers = customers;
+    public void setPrivateCustomers(Set<Customer> privateCustomers) {
+        this.privateCustomers = privateCustomers;
     }
 }

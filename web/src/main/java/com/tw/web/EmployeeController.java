@@ -27,7 +27,7 @@ public class EmployeeController {
         List<Employee> employees = employeeService.listEmployee();
         int[] customerSize = new int[employees.size()];
         for(int i=0;i<customerSize.length;i++){
-            customerSize[i]=employees.get(i).getCustomers().size();
+            customerSize[i]=employees.get(i).getPrivateCustomers().size();
         }
         modelAndView.addObject("employees",employees);
         modelAndView.addObject("customerSize",customerSize);

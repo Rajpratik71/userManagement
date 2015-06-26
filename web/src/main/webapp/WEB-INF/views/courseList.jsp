@@ -23,6 +23,7 @@
             <th>ID</th>
             <th>CoachId</th>
             <th>CourseName</th>
+            <th>CourseDate</th>
         </tr>
         </thead>
         <tbody>
@@ -32,10 +33,15 @@
                 <td>${course.id}</td>
                 <td>${course.coachId}</td>
                 <td>${course.courseName}</td>
-                    <%--<td>${user.employee.job}</td>--%>
+                <td>
+                    <c:forEach var="date" items="${course.courseDates}">
+                        ${date.courseDate}+++
+                    </c:forEach>
+                </td>
                 <td>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/course/${course.id}/edit">修改</a>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/course/${course.id}/delete">删除</a>
+                    <a class="btn btn-default"
+                       href="${pageContext.request.contextPath}/course/${course.id}/delete">删除</a>
                 </td>
             </tr>
         </c:forEach>

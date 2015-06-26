@@ -1,5 +1,7 @@
 package com.tw.core;
 
+import com.tw.core.dao.CourseDAO;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -13,8 +15,9 @@ import java.util.Set;
 public class Course {
     private long id;
     private long coachId;
+    private Customer customer;
     private String courseName;
-    private Set<Date> courseDate;
+    private Set<CourseDate> courseDates;
 
     @Id
     @Column(name = "ID")
@@ -45,17 +48,28 @@ public class Course {
         this.courseName = courseName;
     }
 
-    @OneToMany
-    @JoinTable(
-            name = "COURSE_DATE",
-            joinColumns = @JoinColumn(name = "COURSE_ID")
-    )
-    @Column(name = "COURSE_DATE")
-    public Set<Date> getCourseDate() {
-        return courseDate;
+
+    @OneToMany//unidirectional
+    @JoinColumn(name = "COURSE_ID",referencedColumnName = "ID")
+    public Set<CourseDate> getCourseDates() {
+        return courseDates;
     }
 
-    public void setCourseDate(Set<Date> courseDate) {
-        this.courseDate = courseDate;
+    public void setCourseDates(Set<CourseDate> courseDates) {
+        this.courseDates = courseDates;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "CUSTOMER_SELECT_COURSE",
+            joinColumns = @JoinColumn(name = "COURSE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID")
+    )
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

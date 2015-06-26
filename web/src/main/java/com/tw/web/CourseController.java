@@ -60,7 +60,10 @@ public class CourseController {
     }
     @RequestMapping(value = "/{id}/edit",method = RequestMethod.POST)
     public ModelAndView editCourse(@PathVariable("id") long id,@ModelAttribute Course course){
-        courseService.updateCourse(course);
+        Course saveCourse = courseService.findCourseById(id);
+        saveCourse.setCourseName(course.getCourseName());
+        saveCourse.setCoachId(course.getCoachId());
+        courseService.updateCourse(saveCourse);
         return new ModelAndView("redirect:/course/");
     }
 }

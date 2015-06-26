@@ -1,6 +1,7 @@
 package com.tw.core;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by chenbojian on 15-6-24.
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "CUSTOMER")
 public class Customer {
     @Id
+    @Column(name = "ID")
     @GeneratedValue
     private long id;
 
@@ -28,6 +30,14 @@ public class Customer {
             inverseJoinColumns = @JoinColumn(name = "COACH_ID")
     )
     private Employee privateCoach;
+
+    @ManyToMany
+    @JoinTable(
+            name = "CUSTOMER_SELECT_COURSE",
+            joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "COURSE_ID")
+    )
+    private Set<Course> courses;
 
 
     public long getId() {
@@ -68,5 +78,13 @@ public class Customer {
 
     public void setPrivateCoach(Employee privateCoach) {
         this.privateCoach = privateCoach;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }

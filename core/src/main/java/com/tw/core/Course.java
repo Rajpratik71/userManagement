@@ -15,7 +15,7 @@ import java.util.Set;
 public class Course {
     private long id;
     private long coachId;
-    private Customer customer;
+    private Set<Customer> customers;
     private String courseName;
     private Set<CourseDate> courseDates;
 
@@ -49,7 +49,7 @@ public class Course {
     }
 
 
-    @OneToMany//unidirectional
+    @OneToMany(cascade = CascadeType.ALL)//unidirectional
     @JoinColumn(name = "COURSE_ID",referencedColumnName = "ID")
     public Set<CourseDate> getCourseDates() {
         return courseDates;
@@ -65,11 +65,12 @@ public class Course {
             joinColumns = @JoinColumn(name = "COURSE_ID"),
             inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID")
     )
-    public Customer getCustomer() {
-        return customer;
+    public Set<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
     }
+
 }

@@ -22,4 +22,19 @@ public class CustomerService {
     public List<Customer> listCustomer(){
         return customerDAO.listCustomer();
     }
+
+    public void addCustomer(Customer customer) {
+        customerDAO.addCustomer(customer);
+    }
+
+    public void deleteCustomer(long id) {
+        customerDAO.deleteCustomer(id);
+    }
+    public Customer findCustomerById(long id){
+        return customerDAO.findCustomerById(id);
+    }
+
+    public void updateCustomer(Customer customer) {
+        customerDAO.updateCustomer(customer);
+    }
 }

@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Add Employee</title>
-    <link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/css/bootstrap.min.css"/>
 
 </head>
 <body>

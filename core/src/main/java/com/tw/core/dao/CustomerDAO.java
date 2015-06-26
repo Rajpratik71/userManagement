@@ -17,13 +17,32 @@ public class CustomerDAO {
     private SessionFactory sessionFactory;
 
     @Autowired
-    public CustomerDAO(SessionFactory sessionFactory){
+    public CustomerDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Customer> listCustomer(){
+    public List<Customer> listCustomer() {
         return sessionFactory.getCurrentSession().createQuery("from Customer")
                 .list();
     }
 
+    public void addCustomer(Customer customer) {
+        sessionFactory.getCurrentSession().save(customer);
+    }
+
+    public void deleteCustomer(long id) {
+        Customer customer = findCustomerById(id);
+        if (customer != null) {
+            sessionFactory.getCurrentSession().delete(customer);
+        }
+    }
+
+    public Customer findCustomerById(long id) {
+        Customer customer = (Customer) sessionFactory.getCurrentSession().get(Customer.class, id);
+        return customer;
+    }
+
+    public void updateCustomer(Customer customer) {
+        sessionFactory.getCurrentSession().update(customer);
+    }
 }

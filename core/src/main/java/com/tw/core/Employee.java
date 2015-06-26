@@ -20,10 +20,10 @@ public class Employee {
     private String job;
 
     @OneToOne//lazy or eager
-    @JoinColumn(name="USER_ID")
+    @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "privateCoach",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "privateCoach", cascade = CascadeType.ALL)
 //    @JoinTable(
 //            name = "PRIVATE_COACH",
 //            joinColumns = @JoinColumn(name = "COACH_ID"),
@@ -39,7 +39,7 @@ public class Employee {
         this.user = user;
     }
 
-    public long getUserId(){
+    public long getUserId() {
         return userId;
     }
 

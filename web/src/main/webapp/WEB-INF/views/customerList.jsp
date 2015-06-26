@@ -38,8 +38,8 @@
                 <td>${customer.age}</td>
                 <td>${customer.privateCoach == null}</td>
                 <td>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/customer/${user.id}/edit">修改</a>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/customer/${user.id}/delete">删除</a>
+                    <a class="btn btn-default" href="${pageContext.request.contextPath}/customer/${customer.id}}/edit">修改</a>
+                    <a class="btn btn-default" href="${pageContext.request.contextPath}/customer/${customer.id}/delete">删除</a>
                 </td>
             </tr>
         </c:forEach>

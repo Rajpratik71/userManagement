@@ -23,7 +23,10 @@ task wrapper(type: Wrapper) {
 //mysql -Duser_management -uroot < core/src/main/resources/db/seed/init-user.sql
 
 task initSeed(type: Exec) {
-//    commandLine "which", "ls"
     commandLine "mysql", "-D","user_management","-u","root"
     standardInput = new FileInputStream("core/src/main/resources/db/seed/init-user.sql")
+}
+task cleanSeed(type: Exec) {
+    commandLine "mysql", "-D","user_management","-u","root"
+    standardInput = new FileInputStream("core/src/main/resources/db/seed/clean-data.sql")
 }

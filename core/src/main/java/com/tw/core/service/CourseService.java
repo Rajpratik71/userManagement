@@ -34,4 +34,8 @@ public class CourseService {
     public void updateCourse(Course course){
         courseDAO.updateCourse(course);
     }
+
+    public Course findCourseById(long id) {
+        return courseDAO.findCourseById(id);
+    }
 }

@@ -23,12 +23,12 @@ public class Employee {
     @JoinColumn(name="USER_ID")
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "PRIVATE_COACH",
-            joinColumns = @JoinColumn(name = "COACH_ID"),
-            inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID")
-    )
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "privateCoach",cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "PRIVATE_COACH",
+//            joinColumns = @JoinColumn(name = "COACH_ID"),
+//            inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID")
+//    )
     private Set<Customer> privateCustomers;
 
     public User getUser() {

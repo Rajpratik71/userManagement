@@ -8,7 +8,7 @@
     <title>List of Users</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/css/bootstrap.min.css"/>
 </head>
 <body>
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -70,10 +70,10 @@
     </table>
 </div>
 
-<script src="../lib/js/jquery-1.11.1.min.js"></script>
-<script src="../lib/js/bootstrap.min.js"></script>
-<script src="../lib/js/underscore.min.js"></script>
-<script src="../js/jquery_webmvc/select_all_users.js"></script>
+<script src="${pageContext.request.contextPath}/lib/js/jquery-1.11.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/lib/js/underscore.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery_webmvc/select_all_users.js"></script>
 
 
 </body>

@@ -62,11 +62,11 @@ public class Customer {
         this.age = age;
     }
 
-//    public Employee getPrivateCoach() {
-//        return privateCoach;
-//    }
+    public Employee getPrivateCoach() {
+        return privateCoach;
+    }
 
-//    public void setPrivateCoach(Employee privateCoach) {
-//        this.privateCoach = privateCoach;
-//    }
+    public void setPrivateCoach(Employee privateCoach) {
+        this.privateCoach = privateCoach;
+    }
 }

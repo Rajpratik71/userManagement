@@ -1,5 +1,6 @@
 package com.tw.core;
 
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,16 +9,17 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "EMPLOYEE")
+@Cacheable
 public class Employee {
     @Id
     @Column(name = "USER_ID")
-    @GeneratedValue
+//    @GeneratedValue
     private long userId;
 
     @Column(name = "JOB")
     private String job;
 
-    @OneToOne(optional = false,fetch = FetchType.LAZY)//lazy or eager
+    @OneToOne//lazy or eager
     @JoinColumn(name="USER_ID")
     private User user;
 

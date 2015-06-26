@@ -62,9 +62,9 @@
                     </c:forEach>
                 </td>
                 <td>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${user.id}/edit">修改</a>
+                    <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${employee.userId}/edit">修改</a>
                     <a class="btn btn-default"
-                       href="${pageContext.request.contextPath}/employee/${user.id}/delete">删除</a>
+                       href="${pageContext.request.contextPath}/employee/${employee.userId}/delete">删除</a>
                 </td>
             </tr>
         </c:forEach>

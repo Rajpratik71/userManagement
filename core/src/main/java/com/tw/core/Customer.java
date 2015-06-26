@@ -21,13 +21,13 @@ public class Customer {
     @Column(name = "AGE")
     private int age;
 
-//    @ManyToOne(fetch = FetchType.LAZY)//owner
-//    @JoinTable(
-//            name = "PRIVATE_COACH",
-//            joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
-//            inverseJoinColumns = @JoinColumn(name = "COACH_ID")
-//    )
-//    private Employee privateCoach;
+    @ManyToOne(fetch = FetchType.LAZY)//owner
+    @JoinTable(
+            name = "PRIVATE_COACH",
+            joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "COACH_ID")
+    )
+    private Employee privateCoach;
 
 
     public long getId() {

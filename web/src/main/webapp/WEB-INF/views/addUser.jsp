@@ -36,6 +36,10 @@
             <form:input path="email" class="form-control" />
         </div>
         <div class="form-group">
+            <label for="password">Password:</label>
+            <form:password path="password" class="form-control"/>
+        </div>
+        <div class="form-group">
             <label for="age">Age:</label>
             <form:input path="age" class="form-control"/>
         </div>

@@ -10,8 +10,8 @@ import java.util.Date;
 @Table(name = "COURSE_DATE")
 public class CourseDate {
     private long id;
-    private long courseId;
     private Date courseDate;
+    private Course course;
 
     @Id
     @Column(name ="ID")
@@ -24,15 +24,6 @@ public class CourseDate {
         this.id = id;
     }
 
-    @Column(name = "COURSE_ID")
-    public long getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(long courseId) {
-        this.courseId = courseId;
-    }
-
     @Column(name = "COURSE_DATE")
     public Date getCourseDate() {
         return courseDate;
@@ -40,5 +31,15 @@ public class CourseDate {
 
     public void setCourseDate(Date courseDate) {
         this.courseDate = courseDate;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "COURSE_ID")
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

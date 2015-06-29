@@ -1,9 +1,8 @@
 package com.tw.core;
 
-import com.tw.core.dao.CourseDAO;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,10 +13,9 @@ import java.util.Set;
 @Table(name = "COURSE")
 public class Course {
     private long id;
-    private long coachId;
     private Set<Customer> customers;
     private String courseName;
-    private Set<CourseDate> courseDates;
+    private Set<CourseDate> courseDates = new HashSet<CourseDate>();
 
     @Id
     @Column(name = "ID")
@@ -30,15 +28,6 @@ public class Course {
         this.id = id;
     }
 
-    @Column(name = "COACH_ID")
-    public long getCoachId() {
-        return coachId;
-    }
-
-    public void setCoachId(long coachId) {
-        this.coachId = coachId;
-    }
-
     @Column(name = "COURSE_NAME")
     public String getCourseName() {
         return courseName;
@@ -49,8 +38,7 @@ public class Course {
     }
 
 
-    @OneToMany(cascade = CascadeType.ALL)//unidirectional
-    @JoinColumn(name = "COURSE_ID",referencedColumnName = "ID")
+    @OneToMany(mappedBy = "course")
     public Set<CourseDate> getCourseDates() {
         return courseDates;
     }

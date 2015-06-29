@@ -9,27 +9,17 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "EMPLOYEE")
-@Cacheable
+@Inheritance
+@DiscriminatorColumn(name = "JOB")
 public class Employee {
     @Id
     @Column(name = "USER_ID")
-//    @GeneratedValue
     private long userId;
-
-    @Column(name = "JOB")
-    private String job;
 
     @OneToOne//lazy or eager
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "privateCoach", cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "PRIVATE_COACH",
-//            joinColumns = @JoinColumn(name = "COACH_ID"),
-//            inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID")
-//    )
-    private Set<Customer> privateCustomers;
 
     public User getUser() {
         return user;
@@ -47,19 +37,4 @@ public class Employee {
         this.userId = userId;
     }
 
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public Set<Customer> getPrivateCustomers() {
-        return privateCustomers;
-    }
-
-    public void setPrivateCustomers(Set<Customer> privateCustomers) {
-        this.privateCustomers = privateCustomers;
-    }
 }

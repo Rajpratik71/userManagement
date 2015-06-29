@@ -29,7 +29,7 @@ public class Customer {
             joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
             inverseJoinColumns = @JoinColumn(name = "COACH_ID")
     )
-    private Employee privateCoach;
+    private Coach privateCoach;
 
     @ManyToMany
     @JoinTable(
@@ -72,11 +72,11 @@ public class Customer {
         this.age = age;
     }
 
-    public Employee getPrivateCoach() {
+    public Coach getPrivateCoach() {
         return privateCoach;
     }
 
-    public void setPrivateCoach(Employee privateCoach) {
+    public void setPrivateCoach(Coach privateCoach) {
         this.privateCoach = privateCoach;
     }
 

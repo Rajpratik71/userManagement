@@ -21,7 +21,7 @@
         <tr>
             <th><input type="checkbox" onchange="select_all_or_select_none(this)"/></th>
             <th>ID</th>
-            <th>CoachId</th>
+            <%--<th>CoachId</th>--%>
             <th>CourseName</th>
             <th>CourseDate</th>
         </tr>
@@ -31,7 +31,7 @@
             <tr>
                 <td><input type="checkbox" value="${course.id}"/></td>
                 <td>${course.id}</td>
-                <td>${course.coachId}</td>
+                <%--<td>${course.coachId}</td>--%>
                 <td>${course.courseName}</td>
                 <td>
                     <c:forEach var="date" items="${course.courseDates}">

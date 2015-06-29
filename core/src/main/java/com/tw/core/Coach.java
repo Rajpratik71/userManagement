@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 @DiscriminatorValue("Coach")
 public class Coach extends Employee{
+
     @OneToMany(mappedBy = "privateCoach", cascade = CascadeType.ALL)//delete the many side should be careful.
     private Set<Customer> privateCustomers = new HashSet<Customer>();
 

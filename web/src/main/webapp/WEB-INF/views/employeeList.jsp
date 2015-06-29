@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -56,7 +57,8 @@
                 <td>${employee.job}</td>
                 <td>${employee.user.name}</td>
                 <td>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${employee.id}/edit">修改</a>
+                    <a class="btn btn-default"
+                       href="${pageContext.request.contextPath}/${fn:toLowerCase(employee.job)}/${employee.id}/edit">修改</a>
                     <a class="btn btn-default"
                        href="${pageContext.request.contextPath}/employee/${employee.id}/delete">删除</a>
                 </td>

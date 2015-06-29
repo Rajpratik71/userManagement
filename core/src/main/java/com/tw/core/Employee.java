@@ -15,7 +15,7 @@ public class Employee {
     @Column(name = "ID")
     private long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private User user;
 
@@ -40,5 +40,9 @@ public class Employee {
 
     public String getJob() {
         return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
     }
 }

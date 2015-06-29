@@ -18,12 +18,20 @@
     <h1>Add Coach</h1>
     <form:form method="post" commandName="coach" role="form">
         <div class="form-group">
-            <label for="id">Coach(Employee) Id:</label>
-            <form:input class="form-control" path="id"></form:input>
+            <label for="user.name">Name:</label>
+            <form:input class="form-control" path="user.name"></form:input>
         </div>
         <div class="form-group">
-            <label for="job">Job:</label>
-            <form:input class="form-control" path="job"></form:input>
+            <label for="user.age">Age:</label>
+            <form:input class="form-control" path="user.age"></form:input>
+        </div>
+        <div class="form-group">
+            <label for="user.email">Email:</label>
+            <form:input class="form-control" path="user.email"></form:input>
+        </div>
+        <div class="form-group">
+            <label for="user.password">Password:</label>
+            <form:password class="form-control" path="user.password"></form:password>
         </div>
         <div class="form-group">
             <input class="btn btn-primary" type="submit" value="新增"/>

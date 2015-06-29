@@ -16,20 +16,9 @@
 <body>
 <div class="container">
     <h1>Add Employee</h1>
-    <form:form method="post" commandName="employee" role="form">
-        <div class="form-group">
-            <label for="id">Employee Id:</label>
-            <form:input class="form-control" path="id"></form:input>
-        </div>
-        <div class="form-group">
-            <label for="job">Job:</label>
-            <form:input class="form-control" path="job"></form:input>
-        </div>
-        <div class="form-group">
-            <input class="btn btn-primary" type="submit" value="新增"/>
-            <a href="${pageContext.request.contextPath}/employee/">返回</a>
-        </div>
-    </form:form>
+    <a href="${pageContext.request.contextPath}/coach/add" class="btn btn-primary">Add Coach</a>
+    <a href="${pageContext.request.contextPath}/coach/add" class="btn btn-primary">Add Coach</a>
+    <a href="${pageContext.request.contextPath}/coach/add" class="btn btn-primary">Add Coach</a>
 </div>
 </body>
 </html>

@@ -15,7 +15,7 @@ public class Employee {
     @Column(name = "ID")
     private long id;
 
-    @OneToOne//lazy or eager
+    @OneToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 

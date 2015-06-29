@@ -10,8 +10,11 @@ import java.util.Set;
 @Entity
 @DiscriminatorValue("Coach")
 public class Coach extends Employee{
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "privateCoach", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "privateCoach", cascade = CascadeType.ALL)//delete the many side should be careful.
     private Set<Customer> privateCustomers = new HashSet<Customer>();
+
+    @OneToMany(mappedBy = "coach",orphanRemoval = true)
+    private Set<Course> courses = new HashSet<Course>();
 
     public Set<Customer> getPrivateCustomers() {
         return privateCustomers;
@@ -19,5 +22,13 @@ public class Coach extends Employee{
 
     public void setPrivateCustomers(Set<Customer> privateCustomers) {
         this.privateCustomers = privateCustomers;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }

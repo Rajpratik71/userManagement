@@ -12,14 +12,30 @@ import java.util.Set;
 @Entity
 @Table(name = "COURSE")
 public class Course {
-    private long id;
-    private Set<Customer> customers;
-    private String courseName;
-    private Set<CourseDate> courseDates = new HashSet<CourseDate>();
 
     @Id
     @Column(name = "ID")
     @GeneratedValue
+    private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "COACH_ID")
+    private Coach coach;
+
+    @ManyToMany
+    @JoinTable(
+            name = "CUSTOMER_SELECT_COURSE",
+            joinColumns = @JoinColumn(name = "COURSE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID")
+    )
+    private Set<Customer> customers;
+
+    @Column(name = "COURSE_NAME")
+    private String courseName;
+
+    @OneToMany(mappedBy = "course", orphanRemoval = true)
+    private Set<CourseDate> courseDates = new HashSet<CourseDate>();
+
     public long getId() {
         return id;
     }
@@ -28,7 +44,6 @@ public class Course {
         this.id = id;
     }
 
-    @Column(name = "COURSE_NAME")
     public String getCourseName() {
         return courseName;
     }
@@ -37,8 +52,6 @@ public class Course {
         this.courseName = courseName;
     }
 
-
-    @OneToMany(mappedBy = "course")
     public Set<CourseDate> getCourseDates() {
         return courseDates;
     }
@@ -47,12 +60,6 @@ public class Course {
         this.courseDates = courseDates;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name = "CUSTOMER_SELECT_COURSE",
-            joinColumns = @JoinColumn(name = "COURSE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID")
-    )
     public Set<Customer> getCustomers() {
         return customers;
     }
@@ -61,4 +68,11 @@ public class Course {
         this.customers = customers;
     }
 
+    public Coach getCoach() {
+        return coach;
+    }
+
+    public void setCoach(Coach coach) {
+        this.coach = coach;
+    }
 }

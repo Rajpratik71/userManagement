@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>list all customers</title>
-    <link rel="stylesheet" href="../lib/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
 </head>
 <body>
 <div class="container">
@@ -19,7 +19,7 @@
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th><input type="checkbox" /></th>
+            <th><input type="checkbox"/></th>
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
@@ -31,12 +31,12 @@
         <tbody>
         <c:forEach var="customer" items="${customers}">
             <tr>
-                <td><input type="checkbox" name="selected_customer_id" value="${customer.id}" /></td>
+                <td><input type="checkbox" name="selected_customer_id" value="${customer.id}"/></td>
                 <td>${customer.id}</td>
                 <td>${customer.name}</td>
                 <td>${customer.email}</td>
                 <td>${customer.age}</td>
-                <td>${customer.privateCoach == null}</td>
+                <td>${customer.privateCoach == null ? "null" : customer.privateCoach.user.name}</td>
                 <td>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/customer/${customer.id}}/edit">修改</a>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/customer/${customer.id}/delete">删除</a>

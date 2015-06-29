@@ -25,7 +25,7 @@ public class User {
     @Column(name = "AGE")
     private int age;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user",orphanRemoval = true)
     private Employee employee;
 
     public Employee getEmployee() {

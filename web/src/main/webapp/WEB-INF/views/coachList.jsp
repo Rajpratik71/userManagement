@@ -52,8 +52,8 @@
         <tbody>
         <c:forEach var="coach" items="${coachs}">
             <tr class="user_line">
-                <td><input type="checkbox" name="selected_user_id" value="${user.id}"/></td>
-                <td>${coach.userId}</td>
+                <td><input type="checkbox"/></td>
+                <td>${coach.id}</td>
                 <td>${coach.user.name}</td>
                 <%--<td>${coach.user.name}</td>--%>
                 <td>
@@ -62,9 +62,9 @@
                     </c:forEach>
                 </td>
                 <td>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/coach/${coach.userId}/edit">修改</a>
+                    <a class="btn btn-default" href="${pageContext.request.contextPath}/coach/${coach.id}/edit">修改</a>
                     <a class="btn btn-default"
-                       href="${pageContext.request.contextPath}/coach/${coach.userId}/delete">删除</a>
+                       href="${pageContext.request.contextPath}/coach/${coach.id}/delete">删除</a>
                 </td>
             </tr>
         </c:forEach>

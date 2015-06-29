@@ -2,7 +2,6 @@ package com.tw.core;
 
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * Created by chenbojian on 15-6-23.
@@ -10,16 +9,18 @@ import java.util.Set;
 @Entity
 @Table(name = "EMPLOYEE")
 @Inheritance
-@DiscriminatorColumn(name = "JOB")
+@DiscriminatorColumn(name = "JOB", discriminatorType = DiscriminatorType.STRING)
 public class Employee {
     @Id
-    @Column(name = "USER_ID")
-    private long userId;
+    @Column(name = "ID")
+    private long id;
 
     @OneToOne//lazy or eager
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @Column(name = "JOB", insertable = false, updatable = false)
+    private String job;
 
     public User getUser() {
         return user;
@@ -29,12 +30,15 @@ public class Employee {
         this.user = user;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setId(long id) {
+        this.id = id;
     }
 
+    public String getJob() {
+        return job;
+    }
 }

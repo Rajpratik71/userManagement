@@ -18,8 +18,8 @@
     <h1>Edit Employee page</h1>
     <form:form method="post" commandName="employee">
         <div class="form-group">
-            <label for="userId">User Id:</label>
-            <form:input path="userId" class="form-control"/>
+            <label for="id">Employee Id:</label>
+            <form:input path="id" class="form-control"/>
         </div>
         <div class="form-group">
             <label for="job">Job:</label>

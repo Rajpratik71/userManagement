@@ -7,10 +7,10 @@ insert into USER ( NAME, PASSWORD, EMAIL, AGE) values ('Emma', '5f4dcc3b5aa765d6
 
 insert into EMPLOYEE (USER_ID, JOB ) values (1,'HR');
 insert into EMPLOYEE (USER_ID, JOB ) values (2,'OPs');
-insert into EMPLOYEE (USER_ID, JOB ) values (3,'COACH');
-insert into EMPLOYEE (USER_ID, JOB ) values (4,'COACH');
-insert into EMPLOYEE (USER_ID, JOB ) values (5,'COACH');
-insert into EMPLOYEE (USER_ID, JOB ) values (6,'COACH');
+insert into EMPLOYEE (USER_ID, JOB ) values (3,'Coach');
+insert into EMPLOYEE (USER_ID, JOB ) values (4,'Coach');
+insert into EMPLOYEE (USER_ID, JOB ) values (5,'Coach');
+insert into EMPLOYEE (USER_ID, JOB ) values (6,'Coach');
 
 insert into CUSTOMER (NAME, EMAIL, AGE) values ('CusOne','CusOne@bbd.com',19);
 insert into CUSTOMER (NAME, EMAIL, AGE) values ('CusTwo','CusTwo@bbd.com',19);

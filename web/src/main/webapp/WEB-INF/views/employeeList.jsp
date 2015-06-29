@@ -45,35 +45,26 @@
             <th><input type="checkbox" onchange="select_all_or_select_none(this)"/></th>
             <th>ID</th>
             <th>job</th>
-            <%--<th>Name</th>--%>
-            <th>CustomerNames</th>
+            <th>Name</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="employee" items="${employees}">
             <tr class="user_line">
-                <td><input type="checkbox" name="selected_user_id" value="${user.id}"/></td>
-                <td>${employee.userId}</td>
+                <td><input type="checkbox"/></td>
+                <td>${employee.id}</td>
                 <td>${employee.job}</td>
-                <%--<td>${employee.user.name}</td>--%>
+                <td>${employee.user.name}</td>
                 <td>
-                    <c:forEach var="customer" items="${employee.privateCustomers}">
-                        ${customer.name}+++
-                    </c:forEach>
-                </td>
-                <td>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${employee.userId}/edit">修改</a>
+                    <a class="btn btn-default" href="${pageContext.request.contextPath}/employee/${employee.id}/edit">修改</a>
                     <a class="btn btn-default"
-                       href="${pageContext.request.contextPath}/employee/${employee.userId}/delete">删除</a>
+                       href="${pageContext.request.contextPath}/employee/${employee.id}/delete">删除</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
-<%--<c:forEach var="customer" items="${employees[3].privateCustomers}">--%>
-<%--<p>${customer.name}</p>--%>
-<%--</c:forEach>--%>
 <script src="../lib/js/jquery-1.11.1.min.js"></script>
 <script src="../lib/js/bootstrap.min.js"></script>
 <script src="../lib/js/underscore.min.js"></script>

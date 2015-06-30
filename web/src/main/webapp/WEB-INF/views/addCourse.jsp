@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: chenbojian
@@ -25,6 +26,12 @@
             <label for="coach.id">Coach Id:</label>
             <form:input path="coach.id" class="form-control"/>
         </div>
+        <c:forEach var="dateString" items="${course.courseDates}" varStatus="uStatus">
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <form:input path="courseDates[${uStatus.index}].date" cssClass="form-control" />
+            </div>
+        </c:forEach>
         <div class="form-group">
             <input class="btn btn-primary" type="submit" value="新增" />
             <a href="${pageContext.request.contextPath}/course/">返回</a>

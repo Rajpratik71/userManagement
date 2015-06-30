@@ -33,15 +33,15 @@ public class CourseDAO {
 
     public boolean addCourse(Course course){
         Coach coach = (Coach) sessionFactory.getCurrentSession().get(Coach.class, course.getCoach().getId());
-        try {
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            CourseDate courseDate = new CourseDate();
-            courseDate.setCourse(course);
-            courseDate.setDate(format.parse("2015-03-30"));
-            course.getCourseDates().add(courseDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//            CourseDate courseDate = new CourseDate();
+//            courseDate.setCourse(course);
+//            courseDate.setDate(format.parse("2015-03-30"));
+//            course.getCourseDates().add(courseDate);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         if (coach != null) {
             course.setCoach(coach);
             sessionFactory.getCurrentSession().save(course);

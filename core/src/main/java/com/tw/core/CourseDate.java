@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name = "COURSE_DATE")
 public class CourseDate {
     private long id;
-    private Date courseDate;
+    private Date date;
     private Course course;
 
     @Id
@@ -25,12 +25,12 @@ public class CourseDate {
     }
 
     @Column(name = "COURSE_DATE")
-    public Date getCourseDate() {
-        return courseDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setCourseDate(Date courseDate) {
-        this.courseDate = courseDate;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @ManyToOne

@@ -46,7 +46,7 @@
                 <td>${course.courseName}</td>
                 <td>
                     <c:forEach var="date" items="${course.courseDates}">
-                        ${date.courseDate}+++
+                        ${date.date}+++
                     </c:forEach>
                 </td>
                 <td>

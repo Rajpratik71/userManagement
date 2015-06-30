@@ -37,7 +37,7 @@ public class CourseDAO {
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             CourseDate courseDate = new CourseDate();
             courseDate.setCourse(course);
-            courseDate.setCourseDate(format.parse("2015-03-30"));
+            courseDate.setDate(format.parse("2015-03-30"));
             course.getCourseDates().add(courseDate);
         } catch (ParseException e) {
             e.printStackTrace();

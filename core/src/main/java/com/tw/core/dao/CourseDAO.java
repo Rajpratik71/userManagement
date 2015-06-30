@@ -1,11 +1,16 @@
 package com.tw.core.dao;
 
+import com.tw.core.Coach;
 import com.tw.core.Course;
+import com.tw.core.CourseDate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -21,17 +26,33 @@ public class CourseDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<Course> listCourse(){
+    public List<Course> listCourse() {
         return sessionFactory.getCurrentSession().createQuery("from Course")
                 .list();
     }
 
-    public void addCourse(Course course){
-        sessionFactory.getCurrentSession().save(course);
+    public boolean addCourse(Course course){
+        Coach coach = (Coach) sessionFactory.getCurrentSession().get(Coach.class, course.getCoach().getId());
+        try {
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            CourseDate courseDate = new CourseDate();
+            courseDate.setCourse(course);
+            courseDate.setCourseDate(format.parse("2015-03-30"));
+            course.getCourseDates().add(courseDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (coach != null) {
+            course.setCoach(coach);
+            sessionFactory.getCurrentSession().save(course);
+            return true;
+        }
+        return false;
     }
-    public void deleteCourse(long id){
+
+    public void deleteCourse(long id) {
         Course course = findCourseById(id);
-        if(course != null) {
+        if (course != null) {
             sessionFactory.getCurrentSession().delete(course);
         }
     }
@@ -40,7 +61,7 @@ public class CourseDAO {
         return (Course) sessionFactory.getCurrentSession().get(Course.class, id);
     }
 
-    public void updateCourse(Course course){
+    public void updateCourse(Course course) {
         sessionFactory.getCurrentSession().update(course);
     }
 }

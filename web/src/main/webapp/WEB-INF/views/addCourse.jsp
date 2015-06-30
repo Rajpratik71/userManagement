@@ -22,8 +22,8 @@
             <form:input path="courseName" class="form-control"/>
         </div>
         <div class="form-group">
-            <label for="coachId">CoachId:</label>
-            <form:input path="coachId" class="form-control" />
+            <label for="coach.id">Coach Id:</label>
+            <form:input path="coach.id" class="form-control"/>
         </div>
         <div class="form-group">
             <input class="btn btn-primary" type="submit" value="新增" />

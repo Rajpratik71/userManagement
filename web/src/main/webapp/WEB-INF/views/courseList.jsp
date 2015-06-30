@@ -14,6 +14,17 @@
 </head>
 <body>
 <div class="container">
+    <div class="form-group input-group ">
+        <a href="${pageContext.request.contextPath}/course/add" class="btn btn-primary ">添加Course</a>
+    </div>
+    <div class="form-group input-group ">
+        <input type="search" class="form-control"/>
+        <span class="input-group-btn ">
+            <button class="btn btn-default" type="button">Search</button>
+        </span>
+    </div>
+</div>
+<div class="container">
     <small>${message}</small>
 
     <table class="table table-bordered">

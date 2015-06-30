@@ -33,7 +33,7 @@ public class Course {
     @Column(name = "COURSE_NAME")
     private String courseName;
 
-    @OneToMany(mappedBy = "course", orphanRemoval = true)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private Set<CourseDate> courseDates = new HashSet<CourseDate>();
 
     public long getId() {

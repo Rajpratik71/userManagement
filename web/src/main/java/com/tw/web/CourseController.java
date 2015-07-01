@@ -1,11 +1,13 @@
 package com.tw.web;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.tw.core.Course;
 import com.tw.core.CourseDate;
 import com.tw.core.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,26 +42,20 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView addCoursePage() {
+    public ModelAndView addCoursePage(CourseBean courseBean) {
         ModelAndView modelAndView = new ModelAndView("addCourse");
-        Course course = new Course();
-        try {
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            CourseDate courseDate = new CourseDate();
-            courseDate.setCourse(course);
-            courseDate.setDate(format.parse("2015-03-30"));
-            course.getCourseDates().add(courseDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        modelAndView.addObject("course", course);
-        return modelAndView;
+        courseBean.getCourseDates().add(new Date(0));
+        courseBean.getCourseDates().add(new Date(1));
+        return new ModelAndView("addCourse");
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ModelAndView addCourse(@ModelAttribute Course course) {
-        System.out.println("course = [" + course.getCourseDates().size() + "]");
-        courseService.addCourse(course);
+    public ModelAndView addCourse(@ModelAttribute CourseBean courseBean) {
+        for(Date date : courseBean.getCourseDates()){
+            System.out.println("courseBean = [" + date + "] in POST");
+
+        }
+        courseService.addCourse(courseBean.toCourse());
         return new ModelAndView("redirect:/course/");
     }
 

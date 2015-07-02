@@ -1,8 +1,7 @@
 package com.tw.web;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tw.core.Course;
+import com.tw.core.CourseDate;
 import com.tw.core.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -10,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by chenbojian on 15-6-26.
@@ -80,27 +82,18 @@ public class CourseController {
 
     @RequestMapping(value = "calendar/feed")
     @ResponseBody
-    public List<Event> getCourse(@RequestParam String start,
-                            @RequestParam String end) {
-//        Map map = new HashMap();
-//        map.put("title", "event");
-//        map.put("id", "1");
-//        map.put("start", "2015-07-08");
-//        map.put("end", "2015-07-09");
-//        ObjectMapper mapper = new ObjectMapper();
-//        String content = null;
-//        try {
-//            content = mapper.writeValueAsString(map);
-//        } catch (JsonProcessingException e) {
-//            e.printStackTrace();
-//        }
-//        return"[{\"title\":\"eve1\",\"start\":\"2015-07-08\"}," +
-//                "{\"title\":\"eve2\",\"start\":\"2015-07-08\"}," +
-//                "{\"title\":\"eve3\",\"start\":\"2015-07-08\"}]";
-//        return content;
+    public List<Event> getCourse(@RequestParam Date start,
+                            @RequestParam Date end) {
+
         List<Event> events = new ArrayList<Event>();
-        events.add(new Event("even start",start));
-        events.add(new Event("even end",end));
+        List<CourseDate> courseDates = courseService.findCourseBetween(start,end);
+        for (CourseDate courseDate : courseDates){
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String event_start = sdf.format(courseDate.getDate());
+            String event_title = courseDate.getCourse().getCourseName();
+            events.add(new Event(event_title,event_start));
+        }
+        System.out.println("start = [" + start + "], end = [" + end + "]");
         events.add(new Event("even","2015-07-07"));
         events.add(new Event("even","2015-07-07"));
         return events;
@@ -116,13 +109,12 @@ public class CourseController {
 
 class Event{
     private String title;
+    private String start;
 
     public Event(String title, String start) {
         this.title = title;
         this.start = start;
     }
-
-    private String start;
 
     public String getTitle() {
         return title;

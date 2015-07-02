@@ -1,10 +1,14 @@
 package com.tw.core.service;
 
 import com.tw.core.Course;
+import com.tw.core.CourseDate;
 import com.tw.core.dao.CourseDAO;
+import com.tw.core.dao.CourseDateDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,10 +17,12 @@ import java.util.List;
 @Service
 public class CourseService {
     private CourseDAO courseDAO;
+    private CourseDateDAO courseDateDAO;
 
     @Autowired
-    public CourseService(CourseDAO courseDAO) {
+    public CourseService(CourseDAO courseDAO, CourseDateDAO courseDateDAO) {
         this.courseDAO = courseDAO;
+        this.courseDateDAO = courseDateDAO;
     }
 
     public List<Course> listCourse(){
@@ -37,5 +43,9 @@ public class CourseService {
 
     public Course findCourseById(long id) {
         return courseDAO.findCourseById(id);
+    }
+
+    public List<CourseDate> findCourseBetween(Date start, Date end) {
+        return courseDateDAO.findDateBetween(start,end);
     }
 }

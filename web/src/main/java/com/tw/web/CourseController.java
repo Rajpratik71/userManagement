@@ -1,24 +1,18 @@
 package com.tw.web;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tw.core.Course;
-import com.tw.core.CourseDate;
 import com.tw.core.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.sql.SQLOutput;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by chenbojian on 15-6-26.
@@ -51,7 +45,7 @@ public class CourseController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView addCourse(@ModelAttribute CourseBean courseBean) {
-        for(Date date : courseBean.getCourseDates()){
+        for (Date date : courseBean.getCourseDates()) {
             System.out.println("courseBean = [" + date + "] in POST");
 
         }
@@ -79,10 +73,70 @@ public class CourseController {
         return new ModelAndView("redirect:/course/");
     }
 
+    @RequestMapping(value = "calendar")
+    public ModelAndView showCalendar() {
+        return new ModelAndView("calendar");
+    }
+
+    @RequestMapping(value = "calendar/feed")
+    @ResponseBody
+    public List<Event> getCourse(@RequestParam String start,
+                            @RequestParam String end) {
+//        Map map = new HashMap();
+//        map.put("title", "event");
+//        map.put("id", "1");
+//        map.put("start", "2015-07-08");
+//        map.put("end", "2015-07-09");
+//        ObjectMapper mapper = new ObjectMapper();
+//        String content = null;
+//        try {
+//            content = mapper.writeValueAsString(map);
+//        } catch (JsonProcessingException e) {
+//            e.printStackTrace();
+//        }
+//        return"[{\"title\":\"eve1\",\"start\":\"2015-07-08\"}," +
+//                "{\"title\":\"eve2\",\"start\":\"2015-07-08\"}," +
+//                "{\"title\":\"eve3\",\"start\":\"2015-07-08\"}]";
+//        return content;
+        List<Event> events = new ArrayList<Event>();
+        events.add(new Event("even start",start));
+        events.add(new Event("even end",end));
+        events.add(new Event("even","2015-07-07"));
+        events.add(new Event("even","2015-07-07"));
+        return events;
+    }
+
     @InitBinder
     private void dateBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
         binder.registerCustomEditor(Date.class, editor);
+    }
+}
+
+class Event{
+    private String title;
+
+    public Event(String title, String start) {
+        this.title = title;
+        this.start = start;
+    }
+
+    private String start;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
     }
 }

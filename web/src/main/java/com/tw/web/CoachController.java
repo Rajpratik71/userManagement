@@ -54,6 +54,7 @@ public class CoachController {
     @RequestMapping(value = "/{id}/edit",method = RequestMethod.POST)
     public ModelAndView editCoach(@PathVariable("id") long id,
                                      @ModelAttribute Coach coach){
+        System.out.println("id = [" + id + "], coach.customers = [" + coach.getPrivateCustomers() + "]");
         coachService.updateCoach(coach);
         return new ModelAndView("redirect:/coach/");
     }

@@ -92,9 +92,6 @@ public class CourseController {
             String event_title = courseDate.getCourse().getCourseName();
             events.add(new Event(event_title,event_start));
         }
-        System.out.println("start = [" + start + "], end = [" + end + "]");
-        events.add(new Event("even","2015-07-07"));
-        events.add(new Event("even","2015-07-07"));
         return events;
     }
 

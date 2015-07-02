@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,17 +29,8 @@ public class CourseDAO {
                 .list();
     }
 
-    public boolean addCourse(Course course){
+    public boolean addCourse(Course course) {
         Coach coach = (Coach) sessionFactory.getCurrentSession().get(Coach.class, course.getCoach().getId());
-//        try {
-//            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//            CourseDate courseDate = new CourseDate();
-//            courseDate.setCourse(course);
-//            courseDate.setDate(format.parse("2015-03-30"));
-//            course.getCourseDates().add(courseDate);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
         if (coach != null) {
             course.setCoach(coach);
             sessionFactory.getCurrentSession().save(course);
@@ -63,5 +52,13 @@ public class CourseDAO {
 
     public void updateCourse(Course course) {
         sessionFactory.getCurrentSession().update(course);
+    }
+
+    public List<CourseDate> findDateBetween(Date start, Date end) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("From CourseDate as c where c.date between :startDate and :endDate")
+                .setTimestamp("startDate", start)
+                .setTimestamp("endDate", end)
+                .list();
     }
 }

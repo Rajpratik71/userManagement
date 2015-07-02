@@ -16,6 +16,7 @@
 <div class="container">
     <div class="form-group input-group ">
         <a href="${pageContext.request.contextPath}/course/add" class="btn btn-primary ">添加Course</a>
+        <a href="${pageContext.request.contextPath}/course/calendar" class="btn btn-primary ">课程表</a>
     </div>
     <div class="form-group input-group ">
         <input type="search" class="form-control"/>
@@ -32,7 +33,6 @@
         <tr>
             <th><input type="checkbox" onchange="select_all_or_select_none(this)"/></th>
             <th>ID</th>
-            <%--<th>CoachId</th>--%>
             <th>CourseName</th>
             <th>CourseDate</th>
         </tr>
@@ -42,13 +42,7 @@
             <tr>
                 <td><input type="checkbox" value="${course.id}"/></td>
                 <td>${course.id}</td>
-                <%--<td>${course.coachId}</td>--%>
                 <td>${course.courseName}</td>
-                <td>
-                    <c:forEach var="date" items="${course.courseDates}">
-                        ${date.date}+++
-                    </c:forEach>
-                </td>
                 <td>
                     <a class="btn btn-default" href="${pageContext.request.contextPath}/course/${course.id}/edit">修改</a>
                     <a class="btn btn-default"

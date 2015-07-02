@@ -25,7 +25,6 @@ public class CoachController {
     public ModelAndView listOfCoach(){
         ModelAndView modelAndView = new ModelAndView("coachList");
         List<Coach> coachs = coachService.listCoach();
-        int[] customerSize = new int[coachs.size()];
         modelAndView.addObject("coachs", coachs);
 
         return modelAndView;

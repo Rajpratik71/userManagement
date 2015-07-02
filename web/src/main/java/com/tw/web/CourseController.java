@@ -38,18 +38,11 @@ public class CourseController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public ModelAndView addCoursePage(CourseBean courseBean) {
-        ModelAndView modelAndView = new ModelAndView("addCourse");
-        courseBean.getCourseDates().add(new Date(0));
-        courseBean.getCourseDates().add(new Date(1));
         return new ModelAndView("addCourse");
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView addCourse(@ModelAttribute CourseBean courseBean) {
-        for (Date date : courseBean.getCourseDates()) {
-            System.out.println("courseBean = [" + date + "] in POST");
-
-        }
         courseService.addCourse(courseBean.toCourse());
         return new ModelAndView("redirect:/course/");
     }
@@ -64,13 +57,13 @@ public class CourseController {
     public ModelAndView editCoursePage(@PathVariable("id") long id) {
         Course course = courseService.findCourseById(id);
         ModelAndView modelAndView = new ModelAndView("courseEdit");
-        modelAndView.addObject("course", course);
+        modelAndView.addObject("courseBean", new CourseBean(course));
         return modelAndView;
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public ModelAndView editCourse(@PathVariable("id") long id, @ModelAttribute Course course) {
-        courseService.updateCourse(course);
+    public ModelAndView editCourse(@PathVariable("id") long id, @ModelAttribute CourseBean courseBean) {
+        courseService.updateCourse(courseBean.toCourse());
         return new ModelAndView("redirect:/course/");
     }
 

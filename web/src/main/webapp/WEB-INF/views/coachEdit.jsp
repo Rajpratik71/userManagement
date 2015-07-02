@@ -17,6 +17,10 @@
 
     <h1>Edit Coach page</h1>
     <form:form method="post" commandName="coach">
+        <div class="form-group" style="display:none">
+            <label for="user.id">Id:</label>
+            <form:input class="form-control" path="user.id"></form:input>
+        </div>
         <div class="form-group">
             <label for="user.name">Name:</label>
             <form:input class="form-control" path="user.name"></form:input>

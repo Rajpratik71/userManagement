@@ -13,9 +13,19 @@ import java.util.List;
  * Created by chenbojian on 15-7-1.
  */
 public class CourseBean {
-    private String courseName = "course";
-    private int coachId;
+    private String courseName;
+    private long coachId;
     private List<Date> courseDates =new ArrayList<Date>(0);
+
+    public CourseBean() {
+    }
+    public CourseBean(Course course){
+        courseName = course.getCourseName();
+        coachId = course.getCoach().getId();
+        for (CourseDate courseDate: course.getCourseDates()){
+            courseDates.add(courseDate.getDate());
+        }
+    }
 
     public String getCourseName() {
         return courseName;
@@ -25,11 +35,11 @@ public class CourseBean {
         this.courseName = courseName;
     }
 
-    public int getCoachId() {
+    public long getCoachId() {
         return coachId;
     }
 
-    public void setCoachId(int coachId) {
+    public void setCoachId(long coachId) {
         this.coachId = coachId;
     }
 
@@ -40,6 +50,7 @@ public class CourseBean {
     public void setCourseDates(List<Date> courseDates) {
         this.courseDates = courseDates;
     }
+
     public Course toCourse(){
         Course course= new Course();
         course.setCoach(new Coach());

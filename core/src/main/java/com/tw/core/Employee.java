@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class Employee {
     @Id
     @Column(name = "ID")
+    @GeneratedValue
     private long id;
 
     @OneToOne(cascade = CascadeType.ALL)

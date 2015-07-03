@@ -25,7 +25,7 @@ public class User {
     @Column(name = "AGE")
     private int age;
 
-    @OneToOne(mappedBy = "user",orphanRemoval = true)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Employee employee;
 
     public Employee getEmployee() {

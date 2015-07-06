@@ -80,8 +80,6 @@ public class EmployeeDAOTest {
         return employee;
     }
 
-    ;
-
     @Test
     public void should_affect_user_when_update_employee() {
 //        Employee employee = employeeDAO.findEmployeeById(1);
@@ -93,6 +91,12 @@ public class EmployeeDAOTest {
         sessionFactory.getCurrentSession().flush();
         print_all();
         assertThat(userDAO.findUserById(1).getName()).isEqualTo("change by employee");
+    }
+
+    @Test
+    public void should_delete_user_when_delete_employee_because_of_cascade() {
+        employeeDAO.deleteEmployee(1);
+        assertThat(sessionFactory.getCurrentSession().get(User.class, 1L)).isNull();
     }
 
 

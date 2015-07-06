@@ -71,12 +71,12 @@ public class EmployeeDAOTest {
         }
 
         User user = new User();
-        user.setEmail("addcoach@add.add");
-        user.setName("add coach");
+        user.setEmail("addemployee@add.add");
+        user.setName("add employee");
         user.setAge(19);
         user.setPassword("password");
         employee.setUser(user);
-        user.setEmployee(employee);
+//        user.setEmployee(employee);
         return employee;
     }
 
@@ -84,6 +84,16 @@ public class EmployeeDAOTest {
 
     @Test
     public void should_affect_user_when_update_employee() {
-        Employee employee = employeeDAO.findEmployeeById(1);
+//        Employee employee = employeeDAO.findEmployeeById(1);
+        Employee employee = initEmployee("coach");
+        employee.setId(1);
+        employee.getUser().setId(1);
+        employee.getUser().setName("change by employee");
+        employeeDAO.updateEmployee(employee);//here update can work on transient object
+        sessionFactory.getCurrentSession().flush();
+        print_all();
+        assertThat(userDAO.findUserById(1).getName()).isEqualTo("change by employee");
     }
+
+
 }

@@ -16,7 +16,7 @@ public class Employee {
     @GeneratedValue
     private long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private User user;
 

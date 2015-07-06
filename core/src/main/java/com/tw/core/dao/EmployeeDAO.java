@@ -1,7 +1,6 @@
 package com.tw.core.dao;
 
 import com.tw.core.Employee;
-import com.tw.core.HumanResource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.fest.assertions.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -41,16 +42,9 @@ public class UserDAOTest {
     @Rollback
     @Test
     public void show_dabase_change() {
-        User user = new User();
-//        user.setId(1);
-        user.setName("change");
-        user.setEmail("email@email.com");
-        user.setPassword("password");
-        Coach coach = new Coach();
-        user.setEmployee(coach);
-        coach.setUser(user);
-        userDAO.addUser(user);
-//        userDAO.saveOrUpdate(user);
+        User user = userDAO.findUserById(1);
+        user.setEmployee(null);
+        userDAO.updateUser(user);
         print_all();
         assertEquals(1, 1);
     }
@@ -105,6 +99,24 @@ public class UserDAOTest {
         assertEquals(userDAO.findUserByName("create_for_test").size() == 1, true);
 
     }
+
+    @Transactional
+    @Rollback
+    @Test
+    public void should_use_merge_to_update_correct_when_work_on_transient_object(){
+        User user = initUser();
+        userDAO.addUser(user);
+        long id = user.getId();
+        user = initUser();
+        user.setName("update_user");
+        user.setId(id);
+//        userDAO.updateUser(user);//will raise an exception. A different object with the same identifier value.
+//        userDAO.saveOrUpdate(user);//work like update
+        userDAO.mergeUser(user);
+        sessionFactory.getCurrentSession().flush();
+        assertEquals("update_user",userDAO.findUserById(id).getName());
+    }
+
 
     @Transactional
     @Rollback

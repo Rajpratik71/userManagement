@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.internal.runners.JUnit44RunnerImpl;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -38,7 +39,6 @@ public class UserControllerTest {
     @InjectMocks
     UserController userController = new UserController(userService, passwordService);
 
-    private MockMvc mockMvc;
     List<User> users = new ArrayList<User>(0);
     User user;
 
@@ -46,7 +46,6 @@ public class UserControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-//        this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
         user = new User();
         user.setEmail("test@test.com");
         user.setId(1);

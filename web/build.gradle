@@ -19,6 +19,8 @@ dependencies {
     testCompile 'junit:junit:4.10'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
     testCompile 'com.jayway.jsonpath:json-path-assert:0.9.1'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
+
 }
 
 buildscript {

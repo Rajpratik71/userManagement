@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+//import javax.servlet.jsp.jstl.core.Config;
 
 /**
  * Created by chenbojian on 15-6-23.
@@ -24,6 +25,10 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    @RequestMapping(value = "/error", method = RequestMethod.GET)
+    public String error(){
+        return "error";
+    }
     @RequestMapping("/")
     public ModelAndView listOfEmployee() {
         ModelAndView modelAndView = new ModelAndView("employeeList");

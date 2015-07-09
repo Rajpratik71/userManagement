@@ -44,6 +44,10 @@ jar {
     version =  '0.1.0'
 }
 
+jettyRun {
+    reload = "automatic"
+    scanIntervalSeconds = 1
+}
 
 configurations {
     mysql

@@ -30,3 +30,5 @@ task cleanSeed(type: Exec) {
     commandLine "mysql", "-D","user_management","-u","root"
     standardInput = new FileInputStream("core/src/main/resources/db/seed/clean-data.sql")
 }
+
+

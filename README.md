@@ -1,65 +1,57 @@
-userManagement
+基于Java的技术栈学习
 ==============
-
-##教学内容
-教学的内容以软件开发为主线，主要涉及的内容和辅助工具有：
-* Web开发框架：Spring + Hibernate + Mysql
-* 前端开发： JQuery + CSS 
-* 源代码管理： Git版本控制
-* 构建管理：Gradle/Maven
-* 部署管理：Go/Jenkins
 
 ##考察点
 * Spring + hibernate的配置和环境搭建
 * Spring REST API的编写
-* Ajax应用
-* 持续集成的概念
+* Ajax应用，angular框架，Bootstrap使用
 * 数据库迁移的概念
-
-##主要验证方式
-- 边学习边验证
-- 博客，一周一篇博客
-- 每天的code review
-
-##开发需求：
-- 用户管理模块，JQuery单页面的程序，在管理页面，可以对用户进行增删改查，批量删除、搜索和排序。
-- 在后台需要提供出用户的增删改，以及批量删除和搜索功能的REST API。
-- 用户有姓名、密码、邮箱、年龄的属性，都是必不可少的。
-
-###第一步
-- 使用Gradle生成Web项目的structure
-- 将项目上传至Github
-- 验收标准：提交Github地址到 [Google Drive (共享于学生和Team Lead)]
-
-###第二步
-- 配置Spring + Hibernate + Mysql
-- 开始编写Spring REST API，首先编写查找所有用户
-- 验收标准：在访问URL的时候，页面上会显示所有用户的信息，不需要任何样式，默认数据格式就好。
-
-###第三步
-- 编写其他API，增删改，批量删除和搜索。
-- 验收标准：可以通过POSTMAN等客户端测试工具测试成功。
-
-###第四步
-- 加入密码加密功能，采用MD5
-- 验收标准：数据库中的密码以密文存储。
-
-###第五步
-- 单页面程序前端实现，一个展示所有用户的页面，页面上可以对用户进行增删改、批量删除、搜索和排序
-- 验收标准：可以通过前端的交互对用户进行增删改查、批量删除、搜索和按照年龄排序
-
-###第六步
-- 使用Go/Jenkins创建Pipeline，搭建持续集成的环境
+* ...
 
 
+## 需求
+
+### 第一阶段
+
+1. 将网站跑起来
+2. 找到四个入口，看到用户列表
+
+### 第二阶段
+
+1. 在JSP版本的实现上，写一个登录页面，实现登录功能，用session实现。
+2. 现行的JSP实现和基础数据是没有在创建和修改用户时对密码进行md5码加密的，要求自己加上。
+3. 把JSP版本下的所有用户管理界面的URL，都管理起来，不能录不能访问，直接跳回登录页面。
+4. 如果访问了某不登录无法访问的页面A，就跳回登录页。登录成功就可以跳回页面A，要求用cookie实现。（登录了失败了N次之后，再登录成功也能跳回，一旦登录成功了，来源页面在cookie里的记录应该被清空）
+5. 此时应该有git了
+
+### 第三阶段
+
+1. 这是一个健身房管理系统。系统里有雇员（Employee）, 顾客（Customer）, 课程（Course）, Employee有三种：OPs，HR，COACH（教练）。
+2. 一个顾客可以上多门课，每门课有一个教练。每门课要有课程的时间安排，一门课一定是跨很多天的（精确到天就可以了）。
+3. 每个雇员要关联一个User，1对1的关系
+4. 一个顾客可以指定一个私人教练，且只能指定一个，顾客可以跟私人教练约私人课程，时间是现约现安排，但是教练有课程的日子不能约私人课程
+5. 所有的设置，都参考User的增删改查。只要能增删改查就好了，理解为有一个人操作一台电脑处理所有的企业运转数据。
+6. 显示课程表 
+7. 要求所有的关系都是lazy loading， Coach要单独要建成一个类。
+
+### 第四阶段
+
+1. 将项目打包部署到Tomcat
+2. 下载一个Jenkins，每次提交都下载代码，编译，测试，形成一个war包
+3. 按一个按钮将某个build形成的war包部署到Tomcat
+
+### 第五阶段
+
+1. 用Jersey替代Spring MVC
+2. Angularjs+REST API
+3. 引入layout，消灭前端重复
+4. 前端学习
+
+### 额外
+
+1. 基于nodejs的自动化验收测试
 
 
+## 注意
 
-##Todo
-
-* Role Management
-  - A user/role has several kinds of permissions, 
-  - One kind of permission has several resources(URLs)
-  - A user can be assigned several roles which have related permissions
-
-
+现行代码里有Bug，需要自己发现，自己解决。

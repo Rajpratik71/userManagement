@@ -1,93 +1,125 @@
-Open WorkShop - Go
-==================
+## User Management
 
-<br />
+Teaching content The content of teaching is based on software development. The main content and auxiliary tools involved are:
 
-WorkShop
---------
+Web development framework: Spring + Hibernate + Mysql
+Front-end development: JQuery + CSS
+Source code management: Git version control
+Build management: Gradle/Maven
+Deployment management: Go/Jenkins
 
-欢迎大家来参加这次Open Workshop，你需要作以下准备
+# Inspection point
 
-  - 有一个GitHub账号
-  - 环境搭建，你可以采用以下两种方式：
-    1. 笔记本操作系统不限，安装有Git，JDK 7，以及：
-      - 从`https://services.gradle.org/distributions/gradle-2.0-bin.zip`下载gradle-2.0-bin.zip到**用户根目录**，供Gradle Wrapper使用
-      - 从`http://www.go.cd/download/`下载对应平台的Go Server安装程序和Go Agent安装程序
-    2. 也可以用Docker搭建Go的C/S架构，封装好的image如下：
-      - `lxdcn/openworkshop-go-server`
-      - `lxdcn/openworkshop-go-agent`
+Spring + hibernate configuration and environment setup
+Preparation of Spring REST API
+Ajax application
+The concept of continuous integration
+The concept of database migration
 
+# Main verification method
 
-<br /><br />
+Validate while learning
+Blog, one blog a week
+Daily code review
 
-关于这个工程
------------
+# Development requirements:
 
-这个是一个基于Spring，Gradle打包的Java项目，我剥离了MySQL部分，作为这次Open Workshop的项目样本。
+User management module, JQuery single page program, in the management page, you can add, delete, modify, check, batch delete, search and sort users.
+In the background, it is necessary to provide REST APIs for adding, deleting and modifying users, as well as batch deletion and search functions.
+Users have attributes such as name, password, email address, and age, all of which are indispensable.
 
-这个项目有两个模块`core`和`web`，`core`放有所有的domain对象，`web`是一个war，依赖于`core`；各自都有单元测试和集成测试。
+# first step
 
-工程在容器里启动之后可以用浏览器访问`http://localhost:8080/web/index.html`。
+Use Gradle to generate the structure of the web project
+Upload the project to Github
+Acceptance criteria: Submit your Github address to [Google Drive (shared with students and Team Lead)]
 
+# second step
 
+Configure Spring + Hibernate + Mysql
+Start writing Spring REST API, first write to find all users
+Acceptance criteria: When accessing the URL, all user information will be displayed on the page, without any style, just the default data format.
 
+# Third step
 
-<br /><br />
+Write other APIs, add, delete, modify, batch delete and search.
+Acceptance criteria: It can be successfully tested with client test tools such as POSTMAN.
 
-CI脚本解释
----------
+# fourth step
 
-core模块的编译：`sh script/core-compile.sh`
+Add password encryption function, using MD5
+Acceptance criteria: the password in the database is stored in cipher text.
 
-core模块的单元测试：`sh script/core-ut.sh`
+# fifth step
 
-core模块的集成测试：`sh script/core-integration-test.sh`
+Single-page program front-end implementation, a page that displays all users, users can be added, deleted, deleted in batches, searched and sorted on the page
+Acceptance criteria: users can be added, deleted, modified, checked, batch deleted, searched and sorted by age through front-end interaction
 
-core模块打jar包：`sh script/core-package.sh`
+# Six step
 
-<br />
-web模块的编译：`sh script/web-compile.sh`
+Use Go/Jenkins to create a Pipeline and build a continuous integration environment
 
-web模块的单元测试：`sh script/web-ut.sh`
+# Everything
 
-web模块打war包：`sh script/web-package.sh`
-
-
-<br /><br />
-
-
-CI脚本解释 - Windows 平台
-------------------------
-
-core模块的编译：`script-win32/core-compile.cmd`
-
-core模块的单元测试：`script-win32/core-ut.cmd`
-
-core模块的集成测试：`script-win32/core-integration-test.cmd`
-
-core模块打jar包：`script-win32/core-package.cmd`
-
-<br />
-web模块的编译：`script-win32/web-compile.cmd`
-
-web模块的单元测试：`script-win32/web-ut.cmd`
-
-web模块打war包：`script-win32/web-package.cmd`
+Role Management
+A user/role has several kinds of permissions,
+One kind of permission has several resources(URLs)
+A user can be assigned several roles which have related permissions
 
 
-<br /><br /><br />
+Have a GitHub account
+To set up the environment, you can use the following two methods:
+The notebook operating system is not limited, Git, JDK 7, and:
+From https://services.gradle.org/distributions/gradle-2.0-bin.zipdownload gradle-2.0-bin.zip to the user's home directory , for use Gradle Wrapper
+From http://www.go.cd/download/download the corresponding platform Go Server Setup and Go Agent Installer
+You can also use Docker to build Go's C/S architecture. The packaged image is as follows:
+lxdcn/openworkshop-go-server
+lxdcn/openworkshop-go-agent
 
 
-模块间Jar包依赖
----------------
-core模块生成的jar包路径在`core/build/libs/core.jar`
+This project has two modules coreand web, coreplaced all the objects domain, webis a WAR, depends on core; each have unit testing and integration testing.
 
-web模块生成的jar包路径在`web/build/libs/web.war`
+After the project is launched in the container, it can be accessed with a browser http://localhost:8080/web/index.html.
 
-<br /><br />
+# CI script explanation
 
-Acknowledgement
----------------
+Compilation of core module:sh script/core-compile.sh
 
-https://github.com/weixiaobo88/userManagement
+Unit test of core module:sh script/core-ut.sh
 
+Integration test of core module:sh script/core-integration-test.sh
+
+jar the core module:sh script/core-package.sh
+
+
+Compile the web module: `sh script/web-compile.sh`
+Unit test of web module:sh script/web-ut.sh
+
+Web module to war package:sh script/web-package.sh
+
+
+
+
+CI script interpretation-Windows platform
+Compilation of core module:script-win32/core-compile.cmd
+
+Unit test of core module:script-win32/core-ut.cmd
+
+Integration test of core module:script-win32/core-integration-test.cmd
+
+jar the core module:script-win32/core-package.cmd
+
+
+Compile the web module: `script-win32/web-compile.cmd`
+Unit test of web module:script-win32/web-ut.cmd
+
+Web module to war package:script-win32/web-package.cmd
+
+
+
+
+
+Jar package dependencies between modules
+The path of the jar package generated by the core module is incore/build/libs/core.jar
+
+The path of the jar package generated by the web module is inweb/build/libs/web.war

@@ -1,5 +1,3 @@
-
-
 allprojects {
     apply plugin: 'idea'
 }
@@ -23,3 +21,14 @@ task wrapper(type: Wrapper) {
 
 //gradle任务练习
 //mysql -Duser_management -uroot < core/src/main/resources/db/seed/init-user.sql
+
+task initSeed(type: Exec) {
+    commandLine "mysql", "-D","user_management","-u","root"
+    standardInput = new FileInputStream("core/src/main/resources/db/seed/init-user.sql")
+}
+task cleanSeed(type: Exec) {
+    commandLine "mysql", "-D","user_management","-u","root"
+    standardInput = new FileInputStream("core/src/main/resources/db/seed/clean-data.sql")
+}
+
+

@@ -5,10 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>List of Users</title>
+    <title>List of Coachs</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css"/>
 </head>
 <body>
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -18,7 +18,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">用户管理</a></li>
+                <li class="active"><a href="#">Coach管理</a></li>
             </ul>
         </div>
     </div>
@@ -26,8 +26,8 @@
 
 <div class="container">
     <div class="form-group input-group ">
-        <a href="${pageContext.request.contextPath}/user/add" class="btn btn-primary ">添加用户</a>
-        <button type="button" class="btn btn-default btn " onclick="delete_all_selected_users()">批量删除</button>
+        <a href="${pageContext.request.contextPath}/coach/add" class="btn btn-primary ">添加Coach</a>
+        <%--<button type="button" class="btn btn-default btn " onclick="delete_all_selected_users()">批量删除</button>--%>
     </div>
     <div class="form-group input-group ">
         <input type="search" class="form-control"/>
@@ -44,36 +44,40 @@
         <tr>
             <th><input type="checkbox" onchange="select_all_or_select_none(this)"/></th>
             <th>ID</th>
-            <th>用户名</th>
-            <th>Email</th>
-            <th>年龄</th>
-            <%--<th>JOB</th>--%>
-            <th>操作</th>
+            <th>Name</th>
+            <%--<th>Name</th>--%>
+            <th>CustomerNames</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="user" items="${users}">
+        <c:forEach var="coach" items="${coachs}">
             <tr class="user_line">
-                <td><input type="checkbox" name="selected_user_id" value="${user.id}"/></td>
-                <td>${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.age}</td>
-                <%--<td>${user.employee.job}</td>--%>
+                <td><input type="checkbox"/></td>
+                <td>${coach.id}</td>
+                <td>${coach.user.name}</td>
+                <%--<td>${coach.user.name}</td>--%>
                 <td>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/user/${user.id}/edit">修改</a>
-                    <a class="btn btn-default" href="${pageContext.request.contextPath}/user/${user.id}/delete">删除</a>
+                    <c:forEach var="customer" items="${coach.privateCustomers}">
+                        ${customer.name}+++
+                    </c:forEach>
+                </td>
+                <td>
+                    <a class="btn btn-default" href="${pageContext.request.contextPath}/coach/${coach.id}/edit">修改</a>
+                    <a class="btn btn-default"
+                       href="${pageContext.request.contextPath}/coach/${coach.id}/delete">删除</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 </div>
-
-<script src="${pageContext.request.contextPath}/lib/js/jquery-1.11.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/js/underscore.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery_webmvc/select_all_users.js"></script>
+<%--<c:forEach var="customer" items="${coachs[3].privateCustomers}">--%>
+<%--<p>${customer.name}</p>--%>
+<%--</c:forEach>--%>
+<script src="../lib/js/jquery-1.11.1.min.js"></script>
+<script src="../lib/js/bootstrap.min.js"></script>
+<script src="../lib/js/underscore.min.js"></script>
+<script src="../js/jquery_webmvc/select_all_users.js"></script>
 
 
 </body>

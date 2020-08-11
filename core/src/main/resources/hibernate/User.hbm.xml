@@ -17,5 +17,6 @@
         <property name="age" type="int">
             <column name="AGE" not-null="true" />
         </property>
+        <one-to-one name="employee" class="com.tw.core.Employee"/>
     </class>
 </hibernate-mapping>

@@ -1,6 +1,7 @@
 package com.tw.web;
 
 import com.tw.core.User;
+import com.tw.core.service.PasswordService;
 import com.tw.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,12 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
+    private PasswordService passwordService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordService passwordService) {
         this.userService = userService;
+        this.passwordService = passwordService;
     }
 
     @RequestMapping("/all")
@@ -31,6 +34,12 @@ public class UserController {
     public ModelAndView listOfUsers() {
         ModelAndView modelAndView = new ModelAndView("userList");
         List<User> users = userService.listUser();
+//        System.out.println("---------->GetEmployee----------");
+//        if (users.get(0).getEmployee() != null) {
+//            System.out.println("---------->HaveEmployee----------");
+//        } else {
+//            System.out.println("---------->Don'tHaveEmployee----------");
+//        }
         modelAndView.addObject("users", users);
         return modelAndView;
     }
@@ -39,17 +48,18 @@ public class UserController {
     public ModelAndView addUserPage() {
         ModelAndView modelAndView = new ModelAndView("addUser");
         modelAndView.addObject("user", new User());
-        return  modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView addUser(@ModelAttribute User user) {
         ModelAndView modelAndView = new ModelAndView("userList");
         userService.addUser(user);
+        passwordService.encryptPassword(user);
         String message = "User was successfully added.";
         modelAndView.addObject("message", message);
         modelAndView.addObject("users", userService.listUser());
-        return  modelAndView;
+        return modelAndView;
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
@@ -64,6 +74,7 @@ public class UserController {
     public ModelAndView editUser(@ModelAttribute User user, @PathVariable long id) {
         ModelAndView modelAndView = new ModelAndView("userList");
         userService.updateUser(user);
+        passwordService.encryptPassword(user);
         String message = "User was successfully edited.";
         modelAndView.addObject("message", message);
         modelAndView.addObject("users", userService.listUser());
@@ -88,6 +99,6 @@ public class UserController {
         System.out.println("---------------");
         userService.deleteUserList(ids);
         modelAndView.addObject("users", userService.listUser());
-        return  modelAndView;
+        return modelAndView;
     }
 }

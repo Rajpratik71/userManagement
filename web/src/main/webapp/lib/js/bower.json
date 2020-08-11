@@ -1,0 +1,7 @@
+{
+  "name":"userManagement",
+  "dependencies": {
+    "clndr": "~1.2.12",
+    "fullcalendar": "~2.3.2"
+  }
+}

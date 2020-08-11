@@ -8,7 +8,7 @@
     <title>Add user page</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="../lib/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/css/bootstrap.min.css" />
 </head>
 <body>
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -34,6 +34,10 @@
         <div class="form-group">
             <label for="email">Email:</label>
             <form:input path="email" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <form:password path="password" class="form-control"/>
         </div>
         <div class="form-group">
             <label for="age">Age:</label>

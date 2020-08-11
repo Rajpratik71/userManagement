@@ -1,15 +1,15 @@
-apply plugin: 'java'
-apply plugin: 'flyway'
-
 buildscript {
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        classpath 'org.flywaydb:flyway-gradle-plugin:3.0'
+        classpath 'mysql:mysql-connector-java:5.1.31'
+        classpath 'org.flywaydb:flyway-gradle-plugin:3.2.1'
     }
 }
+apply plugin: 'java'
+apply plugin: 'org.flywaydb.flyway'
 
 //task initTestDB {
 //    flyway {
@@ -48,6 +48,7 @@ dependencies {
     compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
     compile 'org.springframework.security:spring-security-core:3.2.4.RELEASE'
 
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
     testCompile 'junit:junit:4.10'
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
 

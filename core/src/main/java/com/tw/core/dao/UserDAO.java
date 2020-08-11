@@ -1,5 +1,6 @@
 package com.tw.core.dao;
 
+import com.tw.core.Employee;
 import com.tw.core.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,34 @@ public class UserDAO {
         for (int index = 0; index < ids.length; index++) {
             deleteUser(ids[index]);
         }
+    }
+
+    public List<User> validateUserNameAndPassword(String userName, String userPassword) {
+        String query = "FROM User WHERE name=:userName AND password=:userPassword";
+        return sessionFactory.getCurrentSession().createQuery(query)
+                .setString("userName",userName)
+                .setString("userPassword", userPassword)
+                .list();
+    }
+
+    public void mergeUser(User user) {
+        sessionFactory.getCurrentSession().merge(user);
+    }
+
+    public void saveOrUpdate(User user) {
+        sessionFactory.getCurrentSession().saveOrUpdate(user);
+    }
+
+    public void deleteEmployee(User user) {
+        Employee employee = user.getEmployee();
+        employee.setUser(null);
+        user.setEmployee(null);
+        sessionFactory.getCurrentSession().delete(employee);
+    }
+
+    public List<User> findUserByName(String name) {
+        return sessionFactory.getCurrentSession().createQuery("from User where name = :name")
+                .setParameter("name",name)
+                .list();
     }
 }

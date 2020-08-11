@@ -1,6 +1,6 @@
 ## User Management
 
-# Teaching content The content of teaching is based on software development. The main content and auxiliary tools involved are:
+Teaching content The content of teaching is based on software development. The main content and auxiliary tools involved are:
 
 Web development framework: Spring + Hibernate + Mysql
 Front-end development: JQuery + CSS

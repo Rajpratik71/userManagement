@@ -1,65 +1,93 @@
-userManagement
-==============
+Open WorkShop - Go
+==================
 
-##教学内容
-教学的内容以软件开发为主线，主要涉及的内容和辅助工具有：
-* Web开发框架：Spring + Hibernate + Mysql
-* 前端开发： JQuery + CSS 
-* 源代码管理： Git版本控制
-* 构建管理：Gradle/Maven
-* 部署管理：Go/Jenkins
+<br />
 
-##考察点
-* Spring + hibernate的配置和环境搭建
-* Spring REST API的编写
-* Ajax应用
-* 持续集成的概念
-* 数据库迁移的概念
+WorkShop
+--------
 
-##主要验证方式
-- 边学习边验证
-- 博客，一周一篇博客
-- 每天的code review
+欢迎大家来参加这次Open Workshop，你需要作以下准备
 
-##开发需求：
-- 用户管理模块，JQuery单页面的程序，在管理页面，可以对用户进行增删改查，批量删除、搜索和排序。
-- 在后台需要提供出用户的增删改，以及批量删除和搜索功能的REST API。
-- 用户有姓名、密码、邮箱、年龄的属性，都是必不可少的。
+  - 有一个GitHub账号
+  - 环境搭建，你可以采用以下两种方式：
+    1. 笔记本操作系统不限，安装有Git，JDK 7，以及：
+      - 从`https://services.gradle.org/distributions/gradle-2.0-bin.zip`下载gradle-2.0-bin.zip到**用户根目录**，供Gradle Wrapper使用
+      - 从`http://www.go.cd/download/`下载对应平台的Go Server安装程序和Go Agent安装程序
+    2. 也可以用Docker搭建Go的C/S架构，封装好的image如下：
+      - `lxdcn/openworkshop-go-server`
+      - `lxdcn/openworkshop-go-agent`
 
-###第一步
-- 使用Gradle生成Web项目的structure
-- 将项目上传至Github
-- 验收标准：提交Github地址到 [Google Drive (共享于学生和Team Lead)]
 
-###第二步
-- 配置Spring + Hibernate + Mysql
-- 开始编写Spring REST API，首先编写查找所有用户
-- 验收标准：在访问URL的时候，页面上会显示所有用户的信息，不需要任何样式，默认数据格式就好。
+<br /><br />
 
-###第三步
-- 编写其他API，增删改，批量删除和搜索。
-- 验收标准：可以通过POSTMAN等客户端测试工具测试成功。
+关于这个工程
+-----------
 
-###第四步
-- 加入密码加密功能，采用MD5
-- 验收标准：数据库中的密码以密文存储。
+这个是一个基于Spring，Gradle打包的Java项目，我剥离了MySQL部分，作为这次Open Workshop的项目样本。
 
-###第五步
-- 单页面程序前端实现，一个展示所有用户的页面，页面上可以对用户进行增删改、批量删除、搜索和排序
-- 验收标准：可以通过前端的交互对用户进行增删改查、批量删除、搜索和按照年龄排序
+这个项目有两个模块`core`和`web`，`core`放有所有的domain对象，`web`是一个war，依赖于`core`；各自都有单元测试和集成测试。
 
-###第六步
-- 使用Go/Jenkins创建Pipeline，搭建持续集成的环境
+工程在容器里启动之后可以用浏览器访问`http://localhost:8080/web/index.html`。
 
 
 
 
+<br /><br />
 
-##Todo
+CI脚本解释
+---------
 
-* Role Management
-  - A user/role has several kinds of permissions, 
-  - One kind of permission has several resources(URLs)
-  - A user can be assigned several roles which have related permissions
+core模块的编译：`sh script/core-compile.sh`
 
+core模块的单元测试：`sh script/core-ut.sh`
+
+core模块的集成测试：`sh script/core-integration-test.sh`
+
+core模块打jar包：`sh script/core-package.sh`
+
+<br />
+web模块的编译：`sh script/web-compile.sh`
+
+web模块的单元测试：`sh script/web-ut.sh`
+
+web模块打war包：`sh script/web-package.sh`
+
+
+<br /><br />
+
+
+CI脚本解释 - Windows 平台
+------------------------
+
+core模块的编译：`script-win32/core-compile.cmd`
+
+core模块的单元测试：`script-win32/core-ut.cmd`
+
+core模块的集成测试：`script-win32/core-integration-test.cmd`
+
+core模块打jar包：`script-win32/core-package.cmd`
+
+<br />
+web模块的编译：`script-win32/web-compile.cmd`
+
+web模块的单元测试：`script-win32/web-ut.cmd`
+
+web模块打war包：`script-win32/web-package.cmd`
+
+
+<br /><br /><br />
+
+
+模块间Jar包依赖
+---------------
+core模块生成的jar包路径在`core/build/libs/core.jar`
+
+web模块生成的jar包路径在`web/build/libs/web.war`
+
+<br /><br />
+
+Acknowledgement
+---------------
+
+https://github.com/weixiaobo88/userManagement
 

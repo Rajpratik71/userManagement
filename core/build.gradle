@@ -37,6 +37,7 @@ sourceSets {
 
 dependencies {
     compile 'mysql:mysql-connector-java:5.1.31'
+    compile 'org.hsqldb:hsqldb:2.3.2'
     compile 'org.springframework:spring-core:4.0.6.RELEASE'
     compile 'org.springframework:spring-beans:4.0.6.RELEASE'
     compile 'org.springframework:spring-jdbc:4.0.6.RELEASE'

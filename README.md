@@ -1,65 +1,67 @@
-userManagement
-==============
+## User Management
 
-##教学内容
-教学的内容以软件开发为主线，主要涉及的内容和辅助工具有：
-* Web开发框架：Spring + Hibernate + Mysql
-* 前端开发： JQuery + CSS 
-* 源代码管理： Git版本控制
-* 构建管理：Gradle/Maven
-* 部署管理：Go/Jenkins
+# Teaching content The content of teaching is based on software development. The main content and auxiliary tools involved are:
 
-##考察点
-* Spring + hibernate的配置和环境搭建
-* Spring REST API的编写
-* Ajax应用
-* 持续集成的概念
-* 数据库迁移的概念
+Web development framework: Spring + Hibernate + Mysql
+Front-end development: JQuery + CSS
+Source code management: Git version control
+Build management: Gradle/Maven
+Deployment management: Go/Jenkins
 
-##主要验证方式
-- 边学习边验证
-- 博客，一周一篇博客
-- 每天的code review
+# Inspection point
 
-##开发需求：
-- 用户管理模块，JQuery单页面的程序，在管理页面，可以对用户进行增删改查，批量删除、搜索和排序。
-- 在后台需要提供出用户的增删改，以及批量删除和搜索功能的REST API。
-- 用户有姓名、密码、邮箱、年龄的属性，都是必不可少的。
+Spring + hibernate configuration and environment setup
+Preparation of Spring REST API
+Ajax application
+The concept of continuous integration
+The concept of database migration
 
-###第一步
-- 使用Gradle生成Web项目的structure
-- 将项目上传至Github
-- 验收标准：提交Github地址到 [Google Drive (共享于学生和Team Lead)]
+# Main verification method
 
-###第二步
-- 配置Spring + Hibernate + Mysql
-- 开始编写Spring REST API，首先编写查找所有用户
-- 验收标准：在访问URL的时候，页面上会显示所有用户的信息，不需要任何样式，默认数据格式就好。
+Validate while learning
+Blog, one blog a week
+Daily code review
 
-###第三步
-- 编写其他API，增删改，批量删除和搜索。
-- 验收标准：可以通过POSTMAN等客户端测试工具测试成功。
+# Development requirements:
 
-###第四步
-- 加入密码加密功能，采用MD5
-- 验收标准：数据库中的密码以密文存储。
+User management module, JQuery single page program, in the management page, you can add, delete, modify, check, batch delete, search and sort users.
+In the background, it is necessary to provide REST APIs for adding, deleting and modifying users, as well as batch deletion and search functions.
+Users have attributes such as name, password, email address, and age, all of which are indispensable.
 
-###第五步
-- 单页面程序前端实现，一个展示所有用户的页面，页面上可以对用户进行增删改、批量删除、搜索和排序
-- 验收标准：可以通过前端的交互对用户进行增删改查、批量删除、搜索和按照年龄排序
+# first step
 
-###第六步
-- 使用Go/Jenkins创建Pipeline，搭建持续集成的环境
+Use Gradle to generate the structure of the web project
+Upload the project to Github
+Acceptance criteria: Submit your Github address to [Google Drive (shared with students and Team Lead)]
 
+# second step
 
+Configure Spring + Hibernate + Mysql
+Start writing Spring REST API, first write to find all users
+Acceptance criteria: When accessing the URL, all user information will be displayed on the page, without any style, just the default data format.
 
+# Third step
 
+Write other APIs, add, delete, modify, batch delete and search.
+Acceptance criteria: It can be successfully tested with client test tools such as POSTMAN.
 
-##Todo
+# fourth step
 
-* Role Management
-  - A user/role has several kinds of permissions, 
-  - One kind of permission has several resources(URLs)
-  - A user can be assigned several roles which have related permissions
+Add password encryption function, using MD5
+Acceptance criteria: the password in the database is stored in cipher text.
 
+# fifth step
 
+Single-page program front-end implementation, a page that displays all users, users can be added, deleted, deleted in batches, searched and sorted on the page
+Acceptance criteria: users can be added, deleted, modified, checked, batch deleted, searched and sorted by age through front-end interaction
+
+# Six step
+
+Use Go/Jenkins to create a Pipeline and build a continuous integration environment
+
+# Everything
+
+Role Management
+A user/role has several kinds of permissions,
+One kind of permission has several resources(URLs)
+A user can be assigned several roles which have related permissions
